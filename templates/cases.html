@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Кейсы | NML Digital{% endblock %}
+
+{% block content %}
+
+            <section class="cases-grid">
+                <div class="container">
+                    <div class="cases-grid__list">
+                        {% for case in cases %}
+                        <a href="{{ case.get_absolute_url }}">
+                            <article class="case-box">
+                                <div class="case-box__image">
+                                    <img
+                                        src="{{ case.image.url }}"
+                                        alt="{{ case.title }}"
+                                    />
+                                </div>
+
+                                <div class="case-box__content">
+                                    <div class="case-box__tags">
+                                        {% for tag in case.tags %}
+                                            <span>{{ tag }}</span>
+                            {% endfor %}
+                                    </div>
+
+                                    <h3 class="case-box__title">
+                                        {{ case.title }}
+                                    </h3>
+                                </div>
+                            </article>
+                        </a>
+
+                        {% endfor %}
+
+                        
+                    </div>
+                </div>
+            </section>
+{% endblock %}

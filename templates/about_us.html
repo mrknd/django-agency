@@ -1,0 +1,361 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Кейсы | NML Digital{% endblock %}
+
+{% block content %}
+            <section class="hero">
+                <div class="container hero__inner">
+                    <div class="hero__content">
+                        <h1 class="hero__title">
+                            <span class="hero__title-accent">Подробнее о</span
+                            ><br />
+                            цифровом
+                            <br />
+                            агентстве
+                            <span class="hero__title-accent">NML Digital</span>
+                            <span class="hero__decor">
+                                <svg
+                                    width="52"
+                                    height="52"
+                                    viewBox="0 0 52 52"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <line
+                                        x1="26"
+                                        y1="2"
+                                        x2="26"
+                                        y2="20"
+                                        stroke="currentColor"
+                                        stroke-width="3"
+                                        stroke-linecap="round"
+                                    />
+                                    <line
+                                        x1="48"
+                                        y1="10"
+                                        x2="35"
+                                        y2="24"
+                                        stroke="currentColor"
+                                        stroke-width="3"
+                                        stroke-linecap="round"
+                                    />
+                                    <line
+                                        x1="50"
+                                        y1="31"
+                                        x2="31"
+                                        y2="29"
+                                        stroke="currentColor"
+                                        stroke-width="3"
+                                        stroke-linecap="round"
+                                    />
+                                </svg>
+                            </span>
+                        </h1>
+
+                        <div class="hero__wave">
+                            <svg
+                                viewBox="0 0 700 26"
+                                preserveAspectRatio="none"
+                            >
+                                <path
+                                    d="M0 15C22 15 22 5 44 5C66 5 66 15 88 15C110 15 110 5 132 5C154 5 154 15 176 15C198 15 198 5 220 5C242 5 242 15 264 15C286 15 286 5 308 5C330 5 330 15 352 15C374 15 374 5 396 5C418 5 418 15 440 15C462 15 462 5 484 5C506 5 506 15 528 15C550 15 550 5 572 5C594 5 594 15 616 15C638 15 638 5 660 5C682 5 682 15 704 15"
+                                    stroke="currentColor"
+                                    stroke-width="6"
+                                    stroke-linecap="round"
+                                    fill="none"
+                                />
+                            </svg>
+                        </div>
+
+                        <p class="hero__text">
+                            Комплексные маркетинговые решения для продвижения
+                            бизнеса — Google Ads, таргетированная реклама,
+                            SEO-продвижение, SMM, Telegram-реклама. Приведём
+                            клиентов и усилим узнаваемость бренда.
+                        </p>
+                        <a href="#" class="btn btn--hero open-modal">Бесплатная консультация</a>
+                    </div>
+
+                    <div class="hero__image">
+                        <img src="{% static 'images/about.png' %}" alt="Астронавт" />
+                    </div>
+
+                    
+                </div>
+            </section>
+
+            <section class="mission">
+                <div class="container mission__grid">
+                    <div class="mission__left">
+                        <div class="mission__label">
+                            На чем мы фокусируемся?
+                        </div>
+
+                        <h2 class="mission__title">
+                            <span class="hero__title-accent">Миссия</span> и цели,<br />
+                            которые <span class="mission__title_span">двигают</span> нас вперед
+                        </h2>
+
+                        <p class="mission__text">
+                            Цифровой маркетинг — это больше, чем просто
+                            инструмент продвижения бизнеса. Это мощная сила для
+                            роста и развития бренда сегодня.
+                        </p>
+
+                        <p class="mission__text">
+                            Именно поэтому каждый наш проект — это глубокое
+                            понимание клиента, стратегический подход и работа на
+                            результат.
+                        </p>
+
+                        <a href="#" class="btn btn--hero open-modal"> Подробнее </a>
+                    </div>
+
+                    <div class="mission__right">
+                        <div class="mission-card">
+                            <div class="mission-card__icon">
+                                <img src="{% static 'images/icons/icon1.svg' %}" />
+                            </div>
+
+                            <div>
+                                <h4>Поддержка бизнеса</h4>
+                                <p>
+                                    Мы помогаем компаниям из разных регионов
+                                    развиваться через эффективные
+                                    digital-решения. Наши услуги адаптированы
+                                    под задачи бизнеса любого масштаба.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="mission-card">
+                            <div class="mission-card__icon">
+                                <img src="{% static 'images/icons/icon2.svg' %}" />
+                            </div>
+
+                            <div>
+                                <h4>Результат прежде всего</h4>
+                                <p>
+                                    Мы фокусируемся на аналитике, стратегиях и
+                                    прозрачных KPI. Качество нашей работы
+                                    формирует доверие и долгосрочные
+                                    партнерства.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="mission-card">
+                            <div class="mission-card__icon">
+                                <img src="{% static 'images/icons/icon3.svg' %}" />
+                            </div>
+
+                            <div>
+                                <h4>Инновации как стандарт</h4>
+                                <p>
+                                    Мы внедряем новые инструменты, подходы и
+                                    технологии, чтобы всегда быть на шаг впереди
+                                    и достигать лучших результатов.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="mission-card">
+                            <div class="mission-card__icon">
+                                <img src="{% static 'images/icons/icon4.svg' %}" />
+                            </div>
+
+                            <div>
+                                <h4>Развитие команды</h4>
+                                <p>
+                                    Успех клиента начинается с нашей команды. Мы
+                                    инвестируем в обучение и культуру внутри
+                                    компании, чтобы каждый проект реализовывался
+                                    на высшем уровне.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+                        <section class="awards">
+                <div class="container">
+                    <h2 class="awards__title"><span class="hero__title-accent">87</span> фестивальных <span class="hero__title-accent">наград</span></h2>
+
+                    <div class="awards__list">
+                        <div class="award-row">
+                            <div class="award-row__left">
+                                <span class="award-tag">
+                                    РЕЙТИНГ РОССИЙСКИХ ИВЕНТ АГЕНТСТВ
+                                </span>
+                            </div>
+
+                            <div class="award-row__center">
+                                #4 место в рейтинге лучших российских ивент
+                                агентств от PAMU, REMA и НАОМ // 2023
+                            </div>
+
+                            <div class="award-row__icon">+</div>
+                        </div>
+
+                        <div class="award-row">
+                            <div class="award-row__left">AKAP</div>
+
+                            <div class="award-row__center">
+                                ТОП-5 рейтинга креативности АКАР 2023 в
+                                категории «Маркетинговые услуги»
+                            </div>
+
+                            <div class="award-row__icon">+</div>
+                        </div>
+
+                        <div class="award-row">
+                            <div class="award-row__left">RED APPLE</div>
+
+                            <div class="award-row__center">2 награды</div>
+
+                            <div class="award-row__icon">+</div>
+                        </div>
+
+                        <div class="award-row">
+                            <div class="award-row__left">bema!</div>
+
+                            <div class="award-row__center">27 наград</div>
+
+                            <div class="award-row__icon">+</div>
+                        </div>
+
+                        <div class="award-row">
+                            <div class="award-row__left">СОБЫТИЕ ГОДА</div>
+
+                            <div class="award-row__center">22 награды</div>
+
+                            <div class="award-row__icon">+</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="team">
+                <div class="container">
+                    <div class="team__top">
+                        <h2 class="team__title">Команда</h2>
+                    </div>
+
+                    <div class="team__grid">
+                        <article class="team-card">
+                            <div class="team-card__image">
+                                <img
+                                    src="{% static 'images/team/team1.png' %}"
+                                    alt="Игорь Демидов"
+                                />
+                            </div>
+                            <div class="team-card__line"></div>
+                            <h3 class="team-card__name">Игорь<br />Демидов</h3>
+                            <p class="team-card__role">CEO &amp; Co-Founder</p>
+                        </article>
+
+                        <article class="team-card">
+                            <div class="team-card__image">
+                                <img
+                                    src="{% static 'images/team/team2.png' %}"
+                                    alt="Анна Демидова"
+                                />
+                            </div>
+                            <div class="team-card__line"></div>
+                            <h3 class="team-card__name">Анна<br />Демидова</h3>
+                            <p class="team-card__role">
+                                Commercial Director | Co-Founder
+                            </p>
+                        </article>
+
+                        <article class="team-card">
+                            <div class="team-card__image">
+                                <img
+                                    src="{% static 'images/team/team3.jpg' %}"
+                                    alt="Анастасия Гладкая"
+                                />
+                            </div>
+                            <div class="team-card__line"></div>
+                            <h3 class="team-card__name">
+                                Анастасия<br />Гладкая
+                            </h3>
+                            <p class="team-card__role">Executive Director</p>
+                        </article>
+
+                        <article class="team-card">
+                            <div class="team-card__image">
+                                <img
+                                    src="{% static 'images/team/team4.png' %}"
+                                    alt="Дарья Спетанина"
+                                />
+                            </div>
+                            <div class="team-card__line"></div>
+                            <h3 class="team-card__name">
+                                Дарья<br />Спетанина
+                            </h3>
+                            <p class="team-card__role">
+                                Client Service Director
+                            </p>
+                        </article>
+
+                        <article class="team-card">
+                            <div class="team-card__image">
+                                <img
+                                    src="{% static 'images/team/team5.png' %}"
+                                    alt="Карина Полякова"
+                                />
+                            </div>
+                            <div class="team-card__line"></div>
+                            <h3 class="team-card__name">
+                                Карина<br />Полякова
+                            </h3>
+                            <p class="team-card__role">
+                                Client Service Director
+                            </p>
+                        </article>
+
+                        <article class="team-card">
+                            <div class="team-card__image">
+                                <img
+                                    src="{% static 'images/team/team6.png' %}"
+                                    alt="Андрей Бородкин"
+                                />
+                            </div>
+                            <div class="team-card__line"></div>
+                            <h3 class="team-card__name">Юлия<br />Смирнова</h3>
+                            <p class="team-card__role">
+                                Director of International Business Development
+                            </p>
+                        </article>
+
+                        <article class="team-card">
+                            <div class="team-card__image">
+                                <img
+                                    src="{% static 'images/team/team7.jpg' %}"
+                                    alt="Анастасия Порохова"
+                                />
+                            </div>
+                            <div class="team-card__line"></div>
+                            <h3 class="team-card__name">
+                                Анастасия<br />Порохова
+                            </h3>
+                            <p class="team-card__role">HR Generalist</p>
+                        </article>
+
+                        <article class="team-card">
+                            <div class="team-card__image">
+                                <img
+                                    src="{% static 'images/team/team8.jpg' %}"
+                                    alt="Егор Ерёмин"
+                                />
+                            </div>
+                            <div class="team-card__line"></div>
+                            <h3 class="team-card__name">Егор<br />Ерёмин</h3>
+                            <p class="team-card__role">Creative Director</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+{% endblock %}

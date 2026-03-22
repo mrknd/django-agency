@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Блог | NML Digital{% endblock %}
+
+{% block content %}
+<section class="blog-page">
+    <div class="container">
+
+        <div class="blog-page__hero">
+            <p class="blog-page__label">Блог</p>
+
+            <h1 class="blog-page__title">
+                Маркетинг, SEO, реклама и рост бизнеса
+            </h1>
+
+            <p class="blog-page__subtitle">
+                Делимся опытом, кейсами и стратегиями, которые реально работают
+                в digital-маркетинге.
+            </p>
+        </div>
+
+        <div class="blog-filters">
+            <button class="blog-filters__btn active">Все</button>
+            <button class="blog-filters__btn">SEO</button>
+            <button class="blog-filters__btn">PPC</button>
+            <button class="blog-filters__btn">SMM</button>
+            <button class="blog-filters__btn">Разработка</button>
+        </div>
+
+        <div class="blog-list">
+
+            <article class="blog-card">
+                <a href="{% url 'blog_detail' %}" class="blog-card__image">
+                    <img src="{% static 'images/blog/blog-1.jpg' %}" alt="">
+                </a>
+
+                <div class="blog-card__content">
+                    <div class="blog-card__meta">
+                        <span>SEO</span>
+                        <span>5 мин</span>
+                    </div>
+
+                    <h2 class="blog-card__title">
+                        <a href="#">
+                            Как увеличить трафик сайта в 2026 году:
+                            полный гайд по SEO
+                        </a>
+                    </h2>
+
+                    <p class="blog-card__text">
+                        Разбираем современные методы SEO, которые дают результат,
+                        а не просто позиции.
+                    </p>
+                </div>
+            </article>
+
+            <article class="blog-card">
+                <a href="#" class="blog-card__image">
+                    <img src="{% static 'images/blog/blog-2.jpg' %}" alt="">
+                </a>
+
+                <div class="blog-card__content">
+                    <div class="blog-card__meta">
+                        <span>PPC</span>
+                        <span>7 мин</span>
+                    </div>
+
+                    <h2 class="blog-card__title">
+                        <a href="#">
+                            Google Ads в 2026: как получать дешёвые лиды
+                        </a>
+                    </h2>
+
+                    <p class="blog-card__text">
+                        Практические советы по настройке рекламы,
+                        которые увеличивают ROI.
+                    </p>
+                </div>
+            </article>
+
+            <article class="blog-card">
+                <a href="#" class="blog-card__image">
+                    <img src="{% static 'images/blog/blog-3.jpg' %}" alt="">
+                </a>
+
+                <div class="blog-card__content">
+                    <div class="blog-card__meta">
+                        <span>SMM</span>
+                        <span>4 мин</span>
+                    </div>
+
+                    <h2 class="blog-card__title">
+                        <a href="#">
+                            SMM без бюджета: как расти органически
+                        </a>
+                    </h2>
+
+                    <p class="blog-card__text">
+                        Контент, который реально вовлекает и приводит клиентов.
+                    </p>
+                </div>
+            </article>
+
+        </div>
+
+        <div class="blog-page__bottom">
+            <button class="blog-page__more">Показать ещё</button>
+        </div>
+
+    </div>
+</section>
+
+<section class="cases-cta">
+    <div class="container">
+        <div class="cases-cta__box">
+            <div class="cases-cta__content">
+                <p class="cases-cta__label">Нужен рост?</p>
+                <h2 class="cases-cta__title">
+                    Поможем выстроить маркетинг под ваш бизнес
+                </h2>
+            </div>
+
+            <button class="cases-cta__btn open-modal">
+                Получить консультацию
+            </button>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

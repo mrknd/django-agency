@@ -1,0 +1,27 @@
+<header class="header">
+    <div class="container header__inner">
+        <a href="{% url 'home' %}" class="logo">NML</a>
+
+        <nav class="nav" id="nav">
+            <ul class="nav__list">
+                <li class="nav__item"><a href="{% url 'services' %}" class="nav__link">Услуги</a></li>
+                <li class="nav__item"><a href="{% url 'cases' %}" class="nav__link">Кейсы</a></li>
+                <li class="nav__item"><a href="{% url 'blog' %}" class="nav__link">Блог</a></li>
+                <li class="nav__item"><a href="{% url 'about_us' %}" class="nav__link">Компания</a></li>
+                <li class="nav__item"><a href="{% url 'contacts' %}" class="nav__link">Контакты</a></li>
+            </ul>
+        </nav>
+
+        <div class="header__actions">
+            <button class="btn btn--header open-modal" type="button">
+    Связаться
+</button>
+
+            <button class="burger" id="burger" aria-label="Открыть меню">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </div>
+</header>

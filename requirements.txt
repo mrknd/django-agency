@@ -1,0 +1,7 @@
+Django==5.2.12
+gunicorn
+whitenoise
+dj-database-url
+psycopg[binary]
+python-dotenv
+pillow==12.1.1

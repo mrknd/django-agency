@@ -1,0 +1,185 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ case.title }} | NML Digital{% endblock %}
+
+{% block content %}
+<section class="case-detail-hero">
+    <div class="container">
+        <div class="case-detail-hero__top">
+            <div class="case-detail-hero__tags">
+                {% for tag in case.tags %}
+                    <span>{{ tag }}</span>
+                {% endfor %}
+            </div>
+
+            <h1 class="case-detail-hero__title">{{ case.title }}</h1>
+
+            {% if case.hero_subtitle %}
+                <p class="case-detail-hero__subtitle">{{ case.hero_subtitle }}</p>
+            {% endif %}
+        </div>
+
+        <div class="case-detail-hero__image">
+            <img src="{{ case.image.url }}" alt="{{ case.title }}">
+        </div>
+    </div>
+</section>
+
+<section class="case-detail-stats">
+    <div class="container">
+        <div class="case-detail-stats__grid">
+            {% if case.stat_1_value %}
+            <article class="case-stat">
+                <div class="case-stat__value">{{ case.stat_1_value }}</div>
+                <div class="case-stat__label">{{ case.stat_1_label }}</div>
+            </article>
+            {% endif %}
+
+            {% if case.stat_2_value %}
+            <article class="case-stat">
+                <div class="case-stat__value">{{ case.stat_2_value }}</div>
+                <div class="case-stat__label">{{ case.stat_2_label }}</div>
+            </article>
+            {% endif %}
+
+            {% if case.stat_3_value %}
+            <article class="case-stat">
+                <div class="case-stat__value">{{ case.stat_3_value }}</div>
+                <div class="case-stat__label">{{ case.stat_3_label }}</div>
+            </article>
+            {% endif %}
+
+            {% if case.stat_4_value %}
+            <article class="case-stat">
+                <div class="case-stat__value">{{ case.stat_4_value }}</div>
+                <div class="case-stat__label">{{ case.stat_4_label }}</div>
+            </article>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+<section class="case-detail-content">
+    <div class="container">
+        <div class="case-detail-content__grid">
+            <aside class="case-sidebar">
+                <div class="case-sidebar__box">
+                    {% if case.service %}
+                    <div class="case-sidebar__item">
+                        <span class="case-sidebar__label">Услуга</span>
+                        <span class="case-sidebar__value">{{ case.service }}</span>
+                    </div>
+                    {% endif %}
+
+                    {% if case.niche %}
+                    <div class="case-sidebar__item">
+                        <span class="case-sidebar__label">Ниша</span>
+                        <span class="case-sidebar__value">{{ case.niche }}</span>
+                    </div>
+                    {% endif %}
+
+                    {% if case.country %}
+                    <div class="case-sidebar__item">
+                        <span class="case-sidebar__label">Регион</span>
+                        <span class="case-sidebar__value">{{ case.country }}</span>
+                    </div>
+                    {% endif %}
+
+                    {% if case.period %}
+                    <div class="case-sidebar__item">
+                        <span class="case-sidebar__label">Период</span>
+                        <span class="case-sidebar__value">{{ case.period }}</span>
+                    </div>
+                    {% endif %}
+                </div>
+            </aside>
+
+            <div class="case-article">
+                {% if case.task %}
+                <div class="case-article__section">
+                    <h2>Задача проекта</h2>
+                    <p>{{ case.task|linebreaksbr }}</p>
+                </div>
+                {% endif %}
+
+                {% if case.what_we_did %}
+                <div class="case-article__section">
+                    <h2>Что мы сделали</h2>
+                    <p>{{ case.what_we_did|linebreaksbr }}</p>
+                </div>
+                {% endif %}
+
+                {% if case.detail_image %}
+                <div class="case-article__image">
+                    <img src="{{ case.detail_image.url }}" alt="{{ case.title }}">
+                </div>
+                {% endif %}
+
+                {% if case.result %}
+                <div class="case-article__section">
+                    <h2>Результат</h2>
+                    <p>{{ case.result|linebreaksbr }}</p>
+                </div>
+                {% endif %}
+
+                {% if case.quote %}
+                <div class="case-article__quote">
+                    <p>{{ case.quote }}</p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% if related_cases %}
+<section class="case-detail-more">
+    <div class="container">
+        <div class="case-detail-more__top">
+            <h2 class="case-detail-more__title">Другие кейсы</h2>
+            <a href="{% url 'cases' %}" class="case-detail-more__link">Все кейсы</a>
+        </div>
+
+        <div class="case-detail-more__grid">
+            {% for item in related_cases %}
+                <article class="case-box">
+                    <a href="{{ item.get_absolute_url }}" class="case-box__image">
+                        <img src="{{ item.image.url }}" alt="{{ item.title }}">
+                    </a>
+
+                    <div class="case-box__content">
+                        <div class="case-box__tags">
+                            {% for tag in item.tags %}
+                                <span>{{ tag }}</span>
+                            {% endfor %}
+                        </div>
+
+                        <h3 class="case-box__title">
+                            <a href="{{ item.get_absolute_url }}">{{ item.title }}</a>
+                        </h3>
+                    </div>
+                </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<section class="cases-cta">
+    <div class="container">
+        <div class="cases-cta__box">
+            <div class="cases-cta__content">
+                <p class="cases-cta__label">Хотите такой же результат?</p>
+                <h2 class="cases-cta__title">
+                    Обсудим ваш проект и подберём стратегию продвижения
+                </h2>
+            </div>
+
+            <button class="cases-cta__btn open-modal" type="button">
+                Получить консультацию
+            </button>
+        </div>
+    </div>
+</section>
+{% endblock %}

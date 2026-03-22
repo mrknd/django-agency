@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}NML Digital{% endblock %}</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link
+            href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700&display=swap"
+            rel="stylesheet"
+        />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+    {% include 'includes/header.html' %}
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    {% include 'includes/footer.html' %}
+
+<div class="modal" id="contactModal">
+    <div class="modal__overlay" id="modalOverlay"></div>
+
+    <div class="modal__content">
+        <button class="modal__close" id="modalClose">✕</button>
+
+        <h2 class="modal__title">Связаться с нами</h2>
+
+        <form class="modal__form">
+            <input type="text" placeholder="Имя" required>
+            <input type="tel" placeholder="Телефон" required>
+            <input type="text" placeholder="Telegram" required>
+            <input type="text" placeholder="Сайт (необязательно)">
+
+            <button type="submit" class="modal__btn">
+                Отправить
+            </button>
+        </form>
+    </div>
+</div>
+<div class="modal modal-success" id="successModal">
+    <div class="modal__overlay"></div>
+
+    <div class="modal__content modal-success__content">
+        <h2 class="modal__title">Заявка отправлена 🚀</h2>
+
+        <p class="modal-success__text">
+            Мы скоро свяжемся с вами
+        </p>
+
+        <button class="modal__btn" id="successClose">
+            Закрыть
+        </button>
+    </div>
+</div>
+
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

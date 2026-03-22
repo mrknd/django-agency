@@ -1,0 +1,631 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Главная | NML Digital{% endblock %}
+
+{% block content %}
+
+
+{% include 'sections/hero.html' %}
+{% include 'sections/clients.html' %}
+
+
+
+<section class="results-section">
+                <div class="container results-section__inner">
+                    <div class="results-section__image">
+                        <img
+                            src="{% static 'images/shape-graphic.jpg' %}"
+                            alt="Абстрактная графика"
+                        />
+                    </div>
+                    <div class="results-section__content">
+                        <div class="results-section__label">
+                            NML Digital – нацелены на успех вашего бизнеса
+                        </div>
+
+                        <h2 class="results-section__title">
+                            Решения, которые дают
+                            <span class="results-section__title-circle"
+                                >клиентов,</span
+                            >
+                            продажи и ROMI
+                        </h2>
+
+                        <p class="results-section__text">
+                            Наша экспертиза — интернет-магазины, локальный
+                            бизнес, B2B-сегмент, IT-компании и SaaS-продукты.
+                            Наш подход — это WIN-WIN стратегия. Мы даём
+                            результат: продвигаем бизнес, увеличиваем поток
+                            клиентов и продажи. Подтверждаем свою экспертизу
+                            реальной работой и выстраиваем сотрудничество на
+                            годы вперёд.
+                        </p>
+
+                        <a href="#" class="btn results-section__btn open-modal"
+                            >Получить консультацию</a
+                        >
+                    </div>
+                </div>
+</section>
+
+{% include 'sections/services.html' %}
+
+<section class="about-stats">
+                <div class="container">
+                    <div class="about-stats__header">
+                        <h2 class="about-stats__title">
+                            Мы любим <span class="span-color">маркетинг</span>
+                        </h2>
+
+                        <p class="about-stats__subtitle">
+                            И каждый день с душой работаем над развитием бизнеса
+                            наших клиентов
+                        </p>
+                    </div>
+
+                    <div class="about-stats__box">
+                        <div class="about-stat">
+                            <div class="about-stat__number">100+</div>
+
+                            <div class="about-stat__title">профессионалов</div>
+
+                            <div class="about-stat__line"></div>
+
+                            <p class="about-stat__text">
+                                Команда нашего маркетингового агентства — это
+                                опытные специалисты разных направлений
+                                маркетинга, которые стремятся к достижению
+                                комплексных результатов.
+                            </p>
+                        </div>
+
+                        <div class="about-stat">
+                            <div class="about-stat__number">20</div>
+
+                            <div class="about-stat__title">лет работы</div>
+
+                            <div class="about-stat__line line-purple"></div>
+
+                            <p class="about-stat__text">
+                                Накопили огромный опыт развития проектов от
+                                стартапов до брендов федерального и
+                                международного уровня.
+                            </p>
+                        </div>
+
+                        <div class="about-stat">
+                            <div class="about-stat__number">13+</div>
+
+                            <div class="about-stat__title">
+                                направлений маркетинга
+                            </div>
+
+                            <div class="about-stat__line line-pink"></div>
+
+                            <p class="about-stat__text">
+                                В синергии эффективно решаем задачи от
+                                увеличения продаж до развития брендов.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+</section>
+
+<section class="services-carousel">
+                <div class="container">
+                    <div class="services-carousel__top">
+                        <h2 class="services-carousel__title">Услуги</h2>
+
+                        <p class="services-carousel__desc">
+                            Помогаем создавать комплексный маркетинг,
+                            ориентированный как на краткосрочные, так и на
+                            долгосрочные результаты.
+                        </p>
+                    </div>
+
+                    <div class="services-carousel__wrapper">
+                        <button
+                            class="services-carousel__nav services-carousel__nav--prev"
+                            type="button"
+                            aria-label="Предыдущий слайд"
+                        >
+                            <span>&larr;</span>
+                        </button>
+
+                        <div class="services-carousel__viewport">
+                            <div
+                                class="services-carousel__track"
+                                id="servicesTrack"
+                            >
+                                <article class="service-slide">
+                                    <div class="service-slide__content">
+                                        <h3 class="service-slide__title">
+                                            Маркетинговая стратегия
+                                        </h3>
+                                        <p class="service-slide__text">
+                                            Долгосрочно развиваем бизнес через
+                                            планы по улучшению продаж и
+                                            продвижению.
+                                        </p>
+                                    </div>
+                                    <div class="service-slide__image">
+                                        <img
+                                            src="{% static 'images/services/service-1.png' %}"
+                                            alt="Маркетинговая стратегия"
+                                        />
+                                    </div>
+                                </article>
+
+                                <article class="service-slide">
+                                    <div class="service-slide__content">
+                                        <h3 class="service-slide__title">
+                                            Комплексное продвижение
+                                        </h3>
+                                        <p class="service-slide__text">
+                                            Доносим преимущества бренда до
+                                            аудитории и увеличиваем конверсию
+                                            через разные инструменты.
+                                        </p>
+                                    </div>
+                                    <div class="service-slide__image">
+                                        <img
+                                            src="{% static 'images/services/service-2.png' %}"
+                                            alt="Комплексное продвижение"
+                                        />
+                                    </div>
+                                </article>
+
+                                <article class="service-slide">
+                                    <div class="service-slide__content">
+                                        <h3 class="service-slide__title">
+                                            Контекстная реклама
+                                        </h3>
+                                        <p class="service-slide__text">
+                                            Увеличиваем трафик на сайт и доводим
+                                            аудиторию до покупки.
+                                        </p>
+                                    </div>
+                                    <div class="service-slide__image">
+                                        <img
+                                            src="{% static 'images/services/service-3.png' %}"
+                                            alt="Контекстная реклама"
+                                        />
+                                    </div>
+                                </article>
+
+                                <article class="service-slide">
+                                    <div class="service-slide__content">
+                                        <h3 class="service-slide__title">
+                                            Таргетированная реклама
+                                        </h3>
+                                        <p class="service-slide__text">
+                                            Увеличиваем продажи с помощью
+                                            рекламы в социальных сетях.
+                                        </p>
+                                    </div>
+                                    <div class="service-slide__image">
+                                        <img
+                                            src="{% static 'images/services/service-7.webp' %}"
+                                            alt="Таргетированная реклама"
+                                        />
+                                    </div>
+                                </article>
+
+                                <article class="service-slide">
+                                    <div class="service-slide__content">
+                                        <h3 class="service-slide__title">
+                                            Комплексный SMM
+                                        </h3>
+                                        <p class="service-slide__text">
+                                            Создаём сильный бренд, регулярно
+                                            общаемся с аудиторией и отслеживаем
+                                            её путь от поста до покупки.
+                                        </p>
+                                    </div>
+                                    <div class="service-slide__image">
+                                        <img
+                                            src="{% static 'images/services/service-5.png' %}"
+                                            alt="Комплексный SMM"
+                                        />
+                                    </div>
+                                </article>
+
+                                <article class="service-slide">
+                                    <div class="service-slide__content">
+                                        <h3 class="service-slide__title">
+                                            Фирменный стиль
+                                        </h3>
+                                        <p class="service-slide__text">
+                                            Разрабатываем логотип и элементы
+                                            фирменного стиля, которые будут
+                                            привлекать внимание и нравиться
+                                            вашей аудитории.
+                                        </p>
+                                    </div>
+                                    <div class="service-slide__image">
+                                        <img
+                                            src="{% static 'images/services/service-6.png' %}"
+                                            alt="Фирменный стиль"
+                                        />
+                                    </div>
+                                </article>
+
+                                <article class="service-slide">
+                                    <div class="service-slide__content">
+                                        <h3 class="service-slide__title">
+                                            Контент-маркетинг
+                                        </h3>
+                                        <p class="service-slide__text">
+                                            Исследуем нишу компании и формируем
+                                            вокруг бренда аудиторию, которая
+                                            рекомендует вас другим.
+                                        </p>
+                                    </div>
+                                    <div class="service-slide__image">
+                                        <img
+                                            src="{% static 'images/services/service-8.webp' %}"
+                                            alt="Контент-маркетинг"
+                                        />
+                                    </div>
+                                </article>
+                            </div>
+                        </div>
+
+                        <button
+                            class="services-carousel__nav services-carousel__nav--next"
+                            type="button"
+                            aria-label="Следующий слайд"
+                        >
+                            <span>&rarr;</span>
+                        </button>
+                    </div>
+
+                    <div
+                        class="services-carousel__dots"
+                        id="servicesDots"
+                    ></div>
+                </div>
+</section>
+
+<section class="why-us">
+                <div class="container">
+                    <div class="why-us__top">
+                        <div class="why-us__head">
+                            <p class="why-us__label">
+                                Не просто агентство, а партнер для вашего успеха
+                                в Digital сфере
+                            </p>
+
+                            <h2 class="why-us__title">
+                                Почему клиенты выбирают
+                                <span class="why-us__title-mark">NML</span>?
+                            </h2>
+                        </div>
+
+                        <a href="#" class="why-us__cta open-modal">Оставить заявку</a>
+                    </div>
+
+                    <div class="why-us__grid">
+                        <article class="why-card">
+                            <div class="why-card__badge">1</div>
+                            <h3 class="why-card__title">
+                                Индивидуальный подход
+                            </h3>
+                            <p class="why-card__text">
+                                Создаем и предлагаем решения, адаптированные под
+                                ваш бизнес. Анализируем, проводим аудиты
+                                эффективности, ищем точки роста.
+                            </p>
+                        </article>
+
+                        <article class="why-card">
+                            <div class="why-card__badge">2</div>
+                            <h3 class="why-card__title">
+                                Подробная отчетность
+                            </h3>
+                            <p class="why-card__text">
+                                Обсуждаем, разрабатываем планы работ, составляем
+                                подробные отчеты по результатам. Показатели
+                                эффективности, бюджетные расходы, конверсия,
+                                окупаемость.
+                            </p>
+                        </article>
+
+                        <article class="why-card">
+                            <div class="why-card__badge">3</div>
+                            <h3 class="why-card__title">Личный менеджер</h3>
+                            <p class="why-card__text">
+                                Опытный менеджер с успешными кейсами, который
+                                станет вашим «лучшим другом» в работе. Поможет,
+                                проконсультирует и даст ценный совет.
+                            </p>
+                        </article>
+
+                        <article class="why-card">
+                            <div class="why-card__badge">4</div>
+                            <h3 class="why-card__title">
+                                Долгосрочные результаты
+                            </h3>
+                            <p class="why-card__text">
+                                Мы делаем работу так, чтобы вы не просто
+                                получили клиентов быстро, а чтобы поток клиентов
+                                и масштабирование бизнеса росло с каждым
+                                месяцем.
+                            </p>
+                        </article>
+
+                        <article class="why-card">
+                            <div class="why-card__badge">5</div>
+                            <h3 class="why-card__title">
+                                Гарантированная эффективность
+                            </h3>
+                            <p class="why-card__text">
+                                Мы анализируем конкурентов и проект, составляя
+                                прогнозы и оценивая эффективность результатов.
+                                Еще до начала работ вы будете понимать, чего
+                                ожидать.
+                            </p>
+                        </article>
+
+                        <article class="why-card">
+                            <div class="why-card__badge">6</div>
+                            <h3 class="why-card__title">
+                                Прозрачная стоимость
+                            </h3>
+                            <p class="why-card__text">
+                                Мы прозоро и индивидуально рассчитываем
+                                стоимость работ, завися от ваших целей, услуг и
+                                пожеланий. Вы всегда в курсе, на что идут
+                                бюджеты.
+                            </p>
+                        </article>
+                    </div>
+                </div>
+</section>
+
+{% include 'sections/cases.html' %}
+
+<section class="section__faq">
+  <div class="container__faq">
+    <div class="faq-layout__faq">
+      
+      <div class="faq-left__faq">
+        <div class="faq-label__faq">FAQ</div>
+        <h2 class="faq-title__faq">Вам будет интересно узнать</h2>
+
+        <div class="faq-arrow-wrap__faq">
+          <svg class="faq-arrow__faq" width="240" height="180" viewBox="0 0 240 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18 28C34 23 50 38 50 63C50 84 38 96 24 101M80 74C66 74 61 89 61 106C61 141 88 174 132 174C166 174 190 170 212 148M212 148L196 147M212 148L204 132"
+              stroke="#4A4A4A"
+              stroke-width="3"
+              stroke-linecap="round"
+              stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="faq-right__faq">
+        <div class="faq-item__faq active__faq">
+          <button class="faq-question__faq" type="button">
+            <span>Кто такие OnixLab?</span>
+            <span class="faq-icon__faq"></span>
+          </button>
+          <div class="faq-answer-wrap__faq">
+            <div class="faq-answer__faq">
+              OnixLab — это Digital-команда, которая помогает бизнесу в области маркетинга, лидогенерации, рекламы, аналитики и расширения онлайн-продаж.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item__faq">
+          <button class="faq-question__faq" type="button">
+            <span>Какие услуги предоставляются?</span>
+            <span class="faq-icon__faq"></span>
+          </button>
+          <div class="faq-answer-wrap__faq">
+            <div class="faq-answer__faq">
+              Мы предоставляем услуги по performance marketing, таргетированной рекламе, PPC, SEO, аналитике, стратегии роста и упаковке digital-продуктов.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item__faq">
+          <button class="faq-question__faq" type="button">
+            <span>С какими странами мы работаем?</span>
+            <span class="faq-icon__faq"></span>
+          </button>
+          <div class="faq-answer-wrap__faq">
+            <div class="faq-answer__faq">
+              Мы работаем с клиентами из Европы, США, Ближнего Востока и других рынков, где есть спрос на системный digital-маркетинг.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item__faq">
+          <button class="faq-question__faq" type="button">
+            <span>С какими нишами вы работаете?</span>
+            <span class="faq-icon__faq"></span>
+          </button>
+          <div class="faq-answer-wrap__faq">
+            <div class="faq-answer__faq">
+              Мы работаем с e-commerce, финансовыми сервисами, образовательными проектами, SaaS, локальным бизнесом и другими нишами, имеющими потенциал для масштабирования.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item__faq">
+          <button class="faq-question__faq" type="button">
+            <span>Где находится ваша команда?</span>
+            <span class="faq-icon__faq"></span>
+          </button>
+          <div class="faq-answer-wrap__faq">
+            <div class="faq-answer__faq">
+              Команда работает удаленно, что позволяет нам оперативно взаимодействовать с клиентами из разных стран и часовых поясов.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item__faq">
+          <button class="faq-question__faq" type="button">
+            <span>Сколько людей работает в вашей компании?</span>
+            <span class="faq-icon__faq"></span>
+          </button>
+          <div class="faq-answer-wrap__faq">
+            <div class="faq-answer__faq">
+              Над каждым проектом работает собранная под задачу команда из специалистов в маркетинге, дизайне, аналитике и технической реализации.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item__faq">
+          <button class="faq-question__faq" type="button">
+            <span>В чём заключается миссия OnixLab?</span>
+            <span class="faq-icon__faq"></span>
+          </button>
+          <div class="faq-answer-wrap__faq">
+            <div class="faq-answer__faq">
+              Наша миссия — создавать понятные, прибыльные и масштабируемые маркетинговые системы для бизнеса.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item__faq">
+          <button class="faq-question__faq" type="button">
+            <span>Каких результатов я могу ожидать от сотрудничества?</span>
+            <span class="faq-icon__faq"></span>
+          </button>
+          <div class="faq-answer-wrap__faq">
+            <div class="faq-answer__faq">
+              Вы можете рассчитывать на рост количества заявок, повышение рентабельности рекламы, прозрачную аналитику и системный подход к развитию.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item__faq">
+          <button class="faq-question__faq" type="button">
+            <span>Есть ли у вас кейсы или отзывы клиентов?</span>
+            <span class="faq-icon__faq"></span>
+          </button>
+          <div class="faq-answer-wrap__faq">
+            <div class="faq-answer__faq">
+              Да, мы можем показать релевантные кейсы, результаты и отзывы клиентов в зависимости от вашей ниши и задачи.
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="contact-cta">
+                <div class="container">
+                    <div class="contact-cta__grid">
+                        <div class="contact-cta__info">
+                            <div class="contact-cta__label">
+                                Последний шаг к результату
+                            </div>
+
+                            <h2 class="contact-cta__title">
+                                Получите бесплатную консультацию и аудит
+                            </h2>
+
+                            <ul class="contact-cta__list">
+                                <li class="contact-cta__item">
+                                    <span class="contact-cta__icon">✓</span>
+                                    <span
+                                        >Быстро свяжемся — в течение 2
+                                        часов</span
+                                    >
+                                </li>
+
+                                <li class="contact-cta__item">
+                                    <span class="contact-cta__icon">✓</span>
+                                    <span
+                                        >Объясним, как именно привлечь больше
+                                        клиентов</span
+                                    >
+                                </li>
+
+                                <li class="contact-cta__item">
+                                    <span class="contact-cta__icon">✓</span>
+                                    <span
+                                        >Покажем, что действительно работает для
+                                        вашего бизнеса</span
+                                    >
+                                </li>
+
+                                <li class="contact-cta__item">
+                                    <span class="contact-cta__icon">✓</span>
+                                    <span
+                                        >Предложим решение, которое дает
+                                        результат</span
+                                    >
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="contact-form-box">
+                            <h3 class="contact-form-box__title">
+                                Заполните форму
+                            </h3>
+
+                            <form class="contact-form" action="#" method="post">
+                                <div class="contact-form__group">
+                                    <label
+                                        class="contact-form__label"
+                                        for="name"
+                                        >Ваше имя</label
+                                    >
+                                    <input
+                                        class="contact-form__input"
+                                        type="text"
+                                        id="name"
+                                        name="name"
+                                        placeholder="Введіть ім’я"
+                                    />
+                                </div>
+
+                                <div class="contact-form__group">
+                                    <label
+                                        class="contact-form__label"
+                                        for="email"
+                                        >Email</label
+                                    >
+                                    <input
+                                        class="contact-form__input"
+                                        type="email"
+                                        id="email"
+                                        name="email"
+                                        placeholder="Ваш email"
+                                    />
+                                </div>
+
+                                <div class="contact-form__group">
+                                    <label
+                                        class="contact-form__label"
+                                        for="website"
+                                        >Ваш сайт</label
+                                    >
+                                    <input
+                                        class="contact-form__input"
+                                        type="text"
+                                        id="website"
+                                        name="website"
+                                        placeholder="Посилання на сайт"
+                                    />
+                                </div>
+
+                                <button
+                                    class="contact-form__button"
+                                    type="submit"
+                                >
+                                    Начать
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+</section>
+{% endblock %}
