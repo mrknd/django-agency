@@ -1,4 +1,6 @@
 from django.urls import path
+from django.conf.urls.static import static
+from config import settings
 from .views import blog_page, blog_detail, contacts_page, home, cases_page, about_us_page, services_page, case_detail, career_page
 
 urlpatterns = [
@@ -12,3 +14,6 @@ urlpatterns = [
     path('blog/', blog_page, name='blog'),
     path('blog/<slug:slug>/', blog_detail, name='blog_detail')
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
