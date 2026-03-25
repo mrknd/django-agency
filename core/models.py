@@ -50,9 +50,6 @@ class Case(models.Model):
 
     def tags(self):
         return [tag for tag in [self.category, self.niche, self.country] if tag]
-    
-
-
 
 
 class Category(models.TextChoices):
