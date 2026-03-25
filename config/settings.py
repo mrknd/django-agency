@@ -19,8 +19,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'core',
     'django_ckeditor_5'
+    'core',
 ]
 
 MIDDLEWARE = [
@@ -91,7 +91,7 @@ STATICFILES_DIRS = [BASE_DIR / 'static']
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = '/var/data/media'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 CKEDITOR_5_CONFIGS = {
     'default': {
@@ -102,6 +102,7 @@ CKEDITOR_5_CONFIGS = {
             'blockQuote', 'insertTable', '|',
             'undo', 'redo'
         ],
+        
         'height': 400,
         'width': '100%',
     },
