@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.shortcuts import render, get_object_or_404
 from django.utils.text import slugify
-from .models import BlogPost, Case
+from .models import BlogPost, Case, Contacts
 from bs4 import BeautifulSoup
 
 
@@ -94,3 +94,10 @@ def blog_detail(request, slug):
         'processed_content': processed_content,
     }
     return render(request, 'blog_detail.html', context)
+
+
+def contacts_page(request):
+    contacts = Contacts.objects.first()
+    return render(request, 'contacts.html', {
+        'contacts': contacts
+    })

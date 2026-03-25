@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Case, BlogPost
+from .models import Case, BlogPost, Contacts
 
 
 @admin.register(Case)
@@ -17,3 +17,10 @@ class BlogPostAdmin(admin.ModelAdmin):
     list_filter = ('category', 'is_published', 'published_at')
     prepopulated_fields = {}
     search_fields = ('title', 'excerpt', 'content')
+
+
+@admin.register(Contacts)
+class ContactsAdmin(admin.ModelAdmin):
+
+    def has_add_permission(self, request):
+        return not Contacts.objects.exists()

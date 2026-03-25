@@ -1,328 +1,417 @@
-{% extends 'base.html' %}
-{% load static %}
+{% extends 'base.html' %} {% load static %} {% block title %}Кейсы | NML
+Digital{% endblock %} {% block content %}
 
-{% block title %}Кейсы | NML Digital{% endblock %}
+<section class="hero">
+    <div class="container hero__inner">
+        <div class="hero__content">
+            <h1 class="hero__title_services">
+                <span class="hero__title-accent">Комплексное </span>
+                продвижение
+                <br />
+                для
+                <span class="hero__title-accent">бизнеса</span>,<br />
+                ектронной
+                <span class="hero__title-accent">коммерции </span> и разработка
+            </h1>
 
-{% block content %}
+            <div class="hero__wave">
+                <svg viewBox="0 0 700 26" preserveAspectRatio="none">
+                    <path
+                        d="M0 15C22 15 22 5 44 5C66 5 66 15 88 15C110 15 110 5 132 5C154 5 154 15 176 15C198 15 198 5 220 5C242 5 242 15 264 15C286 15 286 5 308 5C330 5 330 15 352 15C374 15 374 5 396 5C418 5 418 15 440 15C462 15 462 5 484 5C506 5 506 15 528 15C550 15 550 5 572 5C594 5 594 15 616 15C638 15 638 5 660 5C682 5 682 15 704 15"
+                        stroke="currentColor"
+                        stroke-width="6"
+                        stroke-linecap="round"
+                        fill="none"
+                    />
+                </svg>
+            </div>
 
-            <section class="hero">
-                <div class="container hero__inner">
-                    <div class="hero__content">
-                        <h1 class="hero__title_services">
-                            <span class="hero__title-accent">Комплексное </span>
-                            продвижение
-                            <br />
-                            для
-                            <span class="hero__title-accent">бизнеса</span
-                            >,<br />
-                            ектронной
-                            <span class="hero__title-accent">коммерции </span> и
-                            разработка
-                        </h1>
+            <p class="hero__text">
+                Повышаем видимость и органический трафик с помощью SEO. Google
+                Ads приносит продажи с высоким ROI и ROAS, а SMM повышает
+                узнаваемость бренда и частоту повторных покупок. Комплексный
+                подход к продвижению для стабильного роста результатов и
+                узнаваемости вашего интернет-магазина.
+            </p>
 
-                        <div class="hero__wave">
-                            <svg
-                                viewBox="0 0 700 26"
-                                preserveAspectRatio="none"
-                            >
-                                <path
-                                    d="M0 15C22 15 22 5 44 5C66 5 66 15 88 15C110 15 110 5 132 5C154 5 154 15 176 15C198 15 198 5 220 5C242 5 242 15 264 15C286 15 286 5 308 5C330 5 330 15 352 15C374 15 374 5 396 5C418 5 418 15 440 15C462 15 462 5 484 5C506 5 506 15 528 15C550 15 550 5 572 5C594 5 594 15 616 15C638 15 638 5 660 5C682 5 682 15 704 15"
-                                    stroke="currentColor"
-                                    stroke-width="6"
-                                    stroke-linecap="round"
-                                    fill="none"
-                                />
-                            </svg>
-                        </div>
+            <a href="#" class="btn btn--hero">Бесплатная консультация</a>
+        </div>
 
-                        <p class="hero__text">
-                            Повышаем видимость и органический трафик с помощью
-                            SEO. Google Ads приносит продажи с высоким ROI и
-                            ROAS, а SMM повышает узнаваемость бренда и частоту
-                            повторных покупок. Комплексный подход к продвижению
-                            для стабильного роста результатов и узнаваемости
-                            вашего интернет-магазина.
-                        </p>
+        <div class="hero__image">
+            <img src="{% static 'images/uslugi.png' %}" alt="Астронавт" />
+        </div>
+    </div>
+</section>
 
-                        <a href="#" class="btn btn--hero"
-                            >Бесплатная консультация</a
-                        >
-                    </div>
+<section class="seo-results">
+    <div class="container">
+        <div class="seo-results__grid">
+            <div class="seo-results__content">
+                <div class="seo-results__label">
+                    Всё ещё думаете, что SEO не работает?
+                </div>
 
-                    <div class="hero__image">
-                        <img src="{% static 'images/uslugi.png' %}" alt="Астронавт" />
+                <h2 class="seo-results__title">
+                    Какие результаты вы получите от SEO?
+                </h2>
+
+                <p class="seo-results__text">
+                    Разрабатываем стратегию продвижения, которая увеличивает
+                    продажи и узнаваемость e-commerce-бизнесов и
+                    интернет-магазинов. Используем таргетинг, аналитику и
+                    оптимизируем воронки продаж. Проводим аудит товарной
+                    матрицы, сезонности, конверсионного пути и рекламы, чтобы
+                    найти точки роста. Снижаем стоимость привлечения клиента,
+                    повышаем ROAS и средний чек, формируем повторные продажи —
+                    все это обеспечивает стабильные и прогнозируемые результаты.
+                </p>
+
+                <a href="#" class="seo-results__btn">Бесплатная консультация</a>
+            </div>
+
+            <div class="seo-results__cards">
+                <article class="seo-result-card">
+                    <img
+                        class="seo-result-card__icon"
+                        src="{% static 'images/icons/i1.svg' %}"
+                        alt="Органический трафик"
+                    />
+                    <h3 class="seo-result-card__title">Органический трафик</h3>
+                    <p class="seo-result-card__text">
+                        Поток трафика даже после активного SEO-продвижения даёт
+                        долгосрочный эффект.
+                    </p>
+                </article>
+
+                <article class="seo-result-card">
+                    <img
+                        class="seo-result-card__icon"
+                        src="{% static 'images/icons/i2.svg' %}"
+                        alt="Органический трафик"
+                    />
+                    <h3 class="seo-result-card__title">Рост конверсий</h3>
+                    <p class="seo-result-card__text">
+                        Целевая аудитория уже ищет ваши услуги и готова
+                        покупать. Тёплые лиды и высокий CR.
+                    </p>
+                </article>
+
+                <article class="seo-result-card">
+                    <img
+                        class="seo-result-card__icon"
+                        src="{% static 'images/icons/i3.svg' %}"
+                        alt="Органический трафик"
+                    />
+                    <h3 class="seo-result-card__title">Высокий ROMI</h3>
+                    <p class="seo-result-card__text">
+                        SEO приводит клиентов без постоянной оплаты, в отличие
+                        от Google Ads. Ниже CPC и CPL.
+                    </p>
+                </article>
+
+                <article class="seo-result-card">
+                    <img
+                        class="seo-result-card__icon"
+                        src="{% static 'images/icons/i4.svg' %}"
+                        alt="Органический трафик"
+                    />
+                    <h3 class="seo-result-card__title">Повышение доверия</h3>
+                    <p class="seo-result-card__text">
+                        Первая страница выдачи — это подтверждение репутации и
+                        шанс стать выбором клиента №1.
+                    </p>
+                </article>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="services-sales">
+    <div class="container">
+        <div class="services-sales__top">
+            <div class="services-sales__head">
+                <p class="services-sales__label">
+                    Узнайте, как улучшить результаты
+                </p>
+                <h2 class="services-sales__title">
+                    Услуги, которые увеличивают продажи и лояльность
+                </h2>
+            </div>
+
+            <div class="services-sales__note">
+                Подбираем услуги под потребности вашего интернет-магазина.
+            </div>
+        </div>
+
+        <div class="services-sales__list">
+            <article class="sales-service">
+                <div class="sales-service__icon">◔</div>
+
+                <div class="sales-service__name">SEO-продвижение</div>
+
+                <div class="sales-service__info">
+                    <p class="sales-service__text">
+                        Увеличиваем видимость товаров в поиске, приводим
+                        клиентов дешевле контекстной рекламы и повышаем прибыль
+                        за счёт SEO-оптимизации.
+                    </p>
+
+                    <div class="sales-service__tags">
+                        <span>Категорийное SEO</span>
+                        <span>Техническая оптимизация</span>
+                        <span>Оптимизация контента</span>
                     </div>
                 </div>
-            </section>
+            </article>
 
-            <section class="seo-results">
-                <div class="container">
-                    <div class="seo-results__grid">
-                        <div class="seo-results__content">
-                            <div class="seo-results__label">
-                                Всё ещё думаете, что SEO не работает?
-                            </div>
+            <article class="sales-service">
+                <div class="sales-service__icon">◎</div>
 
-                            <h2 class="seo-results__title">
-                                Какие результаты вы получите от SEO?
-                            </h2>
+                <div class="sales-service__name">
+                    Контекстная реклама
+                    <br />(Google Ads)
+                </div>
 
-                            <p class="seo-results__text">
-                                Разрабатываем стратегию продвижения, которая
-                                увеличивает продажи и узнаваемость
-                                e-commerce-бизнесов и интернет-магазинов.
-                                Используем таргетинг, аналитику и оптимизируем
-                                воронки продаж. Проводим аудит товарной матрицы,
-                                сезонности, конверсионного пути и рекламы, чтобы
-                                найти точки роста. Снижаем стоимость привлечения
-                                клиента, повышаем ROAS и средний чек, формируем
-                                повторные продажи — все это обеспечивает
-                                стабильные и прогнозируемые результаты.
-                            </p>
+                <div class="sales-service__info">
+                    <p class="sales-service__text">
+                        Обеспечивает стабильный поток заказов через Performance
+                        Max и Shopping. Снижает CPA и повышает эффективность
+                        рекламного бюджета.
+                    </p>
 
-                            <a href="#" class="seo-results__btn"
-                                >Бесплатная консультация</a
-                            >
-                        </div>
-
-                        <div class="seo-results__cards">
-                            <article class="seo-result-card">
-                                <img
-                                    class="seo-result-card__icon"
-                                    src="{% static 'images/icons/i1.svg' %}"
-                                    alt="Органический трафик"
-                                />
-                                <h3 class="seo-result-card__title">
-                                    Органический трафик
-                                </h3>
-                                <p class="seo-result-card__text">
-                                    Поток трафика даже после активного
-                                    SEO-продвижения даёт долгосрочный эффект.
-                                </p>
-                            </article>
-
-                            <article class="seo-result-card">
-                                <img
-                                    class="seo-result-card__icon"
-                                    src="{% static 'images/icons/i2.svg' %}"
-                                    alt="Органический трафик"
-                                />
-                                <h3 class="seo-result-card__title">
-                                    Рост конверсий
-                                </h3>
-                                <p class="seo-result-card__text">
-                                    Целевая аудитория уже ищет ваши услуги и
-                                    готова покупать. Тёплые лиды и высокий CR.
-                                </p>
-                            </article>
-
-                            <article class="seo-result-card">
-                                <img
-                                    class="seo-result-card__icon"
-                                    src="{% static 'images/icons/i3.svg' %}"
-                                    alt="Органический трафик"
-                                />
-                                <h3 class="seo-result-card__title">
-                                    Высокий ROMI
-                                </h3>
-                                <p class="seo-result-card__text">
-                                    SEO приводит клиентов без постоянной оплаты,
-                                    в отличие от Google Ads. Ниже CPC и CPL.
-                                </p>
-                            </article>
-
-                            <article class="seo-result-card">
-                                <img
-                                    class="seo-result-card__icon"
-                                    src="{% static 'images/icons/i4.svg' %}"
-                                    alt="Органический трафик"
-                                />
-                                <h3 class="seo-result-card__title">
-                                    Повышение доверия
-                                </h3>
-                                <p class="seo-result-card__text">
-                                    Первая страница выдачи — это подтверждение
-                                    репутации и шанс стать выбором клиента №1.
-                                </p>
-                            </article>
-                        </div>
+                    <div class="sales-service__tags">
+                        <span>Performance Max</span>
+                        <span>Google Shopping</span>
+                        <span>Smart bidding</span>
                     </div>
                 </div>
-            </section>
+            </article>
 
-            <section class="services-sales">
-  <div class="container">
-    <div class="services-sales__top">
-      <div class="services-sales__head">
-        <p class="services-sales__label">
-          Узнайте, как улучшить результаты
-        </p>
-        <h2 class="services-sales__title">
-          Услуги, которые увеличивают
-          продажи и лояльность
-        </h2>
-      </div>
+            <article class="sales-service">
+                <div class="sales-service__icon">⬡</div>
 
-      <div class="services-sales__note">
-        Подбираем услуги под потребности вашего интернет-магазина.
-      </div>
+                <div class="sales-service__name">Таргетированная реклама</div>
+
+                <div class="sales-service__info">
+                    <p class="sales-service__text">
+                        Возвращает тех, кто уже был на сайте, приводит новых
+                        покупателей и помогает быстрее увеличивать количество
+                        заказов.
+                    </p>
+
+                    <div class="sales-service__tags">
+                        <span>Динамические каталоги</span>
+                        <span>Ретаргетинг корзины</span>
+                        <span>Продвижение акций</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="sales-service">
+                <div class="sales-service__icon">◉</div>
+
+                <div class="sales-service__name">SMM-продвижение</div>
+
+                <div class="sales-service__info">
+                    <p class="sales-service__text">
+                        Повышает доверие к бренду, стимулирует повторные покупки
+                        и рекомендации интернет-магазину, что напрямую влияет на
+                        LTV.
+                    </p>
+
+                    <div class="sales-service__tags">
+                        <span>Аудитории вокруг бренда</span>
+                        <span>Возврат клиентов</span>
+                        <span>Работа с отзывами</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="sales-service">
+                <div class="sales-service__icon">◔</div>
+
+                <div class="sales-service__name">Веб-разработка</div>
+
+                <div class="sales-service__info">
+                    <p class="sales-service__text">
+                        Создаём современные сайты и сервисы, которые привлекают
+                        клиентов, повышают доверие к бренду и увеличивают
+                        конверсию. Разрабатываем быстрые, адаптивные и удобные
+                        решения под любые задачи бизнеса.
+                    </p>
+
+                    <div class="sales-service__tags">
+                        <span>Кастомная разработка</span>
+                        <span>Адаптивный дизайн</span>
+                        <span>Интеграции и API</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="sales-service">
+                <div class="sales-service__icon">◎</div>
+
+                <div class="sales-service__name">E-commerce</div>
+
+                <div class="sales-service__info">
+                    <p class="sales-service__text">
+                        Запускаем и масштабируем онлайн-магазины, увеличиваем
+                        продажи и средний чек за счёт продуманной структуры и
+                        UX. Настраиваем всё — от витрины до оплаты и аналитики.
+                    </p>
+
+                    <div class="sales-service__tags">
+                        <span>Интернет-магазины</span>
+                        <span>Платёжные системы</span>
+                        <span>Оптимизация конверсии</span>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="services-block">
+  <div class="container services-block__container">
+
+    <h2 class="services-block__title">Наши технологии</h2>
+
+    <div class="services-block__text">
+      OnixLab Agency — ваш надежный партнер в сфере веб-решений с более чем 10-летним опытом. Мы специализируемся на предоставлении полного цикла услуг в области веб-разработки и дизайна, а также на создании веб-приложений и корпоративных порталов.
     </div>
 
-    <div class="services-sales__list">
+    <div class="services-block__grid">
 
-      <article class="sales-service">
-        <div class="sales-service__icon">◔</div>
-
-        <div class="sales-service__name">
-          SEO-продвижение
+      <div class="services-block__card">
+        <div class="services-block__icon">
+          <img src="{% static 'images/tech/js.svg' %}" alt="">
         </div>
+        <h3 class="services-block__card-title">JavaScript<br>development</h3>
+      </div>
 
-        <div class="sales-service__info">
-          <p class="sales-service__text">
-            Увеличиваем видимость товаров в поиске, приводим клиентов
-            дешевле контекстной рекламы и повышаем прибыль за счёт
-            SEO-оптимизации.
-          </p>
-
-          <div class="sales-service__tags">
-            <span>Категорийное SEO</span>
-            <span>Техническая оптимизация</span>
-            <span>Оптимизация контента</span>
-          </div>
+      <div class="services-block__card">
+        <div class="services-block__icon">
+          <img src="{% static 'images/tech/python.svg' %}" alt="">
         </div>
+        <h3 class="services-block__card-title">Python<br>development</h3>
+      </div>
 
-
-      </article>
-
-      <article class="sales-service">
-        <div class="sales-service__icon">◎</div>
-
-        <div class="sales-service__name">
-          Контекстная реклама
-          <br>(Google Ads)
+      <div class="services-block__card">
+        <div class="services-block__icon">
+          <img src="{% static 'images/tech/django.svg' %}" alt="">
         </div>
+        <h3 class="services-block__card-title">Django<br>development</h3>
+      </div>
 
-        <div class="sales-service__info">
-          <p class="sales-service__text">
-            Обеспечивает стабильный поток заказов через Performance Max и
-            Shopping. Снижает CPA и повышает эффективность рекламного бюджета.
-          </p>
-
-          <div class="sales-service__tags">
-            <span>Performance Max</span>
-            <span>Google Shopping</span>
-            <span>Smart bidding</span>
-          </div>
+      <div class="services-block__card">
+        <div class="services-block__icon">
+          <img src="{% static 'images/tech/php.svg' %}" alt="">
         </div>
+        <h3 class="services-block__card-title">PHP<br>development</h3>
+      </div>
 
-
-      </article>
-
-      <article class="sales-service">
-        <div class="sales-service__icon">⬡</div>
-
-        <div class="sales-service__name">
-          Таргетированная реклама
+      <div class="services-block__card">
+        <div class="services-block__icon">
+          <img src="{% static 'images/tech/wordpress.svg' %}" alt="">
         </div>
+        <h3 class="services-block__card-title">WordPress<br>development</h3>
+      </div>
 
-        <div class="sales-service__info">
-          <p class="sales-service__text">
-            Возвращает тех, кто уже был на сайте, приводит новых покупателей
-            и помогает быстрее увеличивать количество заказов.
-          </p>
-
-          <div class="sales-service__tags">
-            <span>Динамические каталоги</span>
-            <span>Ретаргетинг корзины</span>
-            <span>Продвижение акций</span>
-          </div>
+      <div class="services-block__card">
+        <div class="services-block__icon">
+          <img src="{% static 'images/tech/api.svg' %}" alt="">
         </div>
+        <h3 class="services-block__card-title">API<br>Development</h3>
+      </div>
 
-
-      </article>
-
-      <article class="sales-service">
-        <div class="sales-service__icon">◉</div>
-
-        <div class="sales-service__name">
-          SMM-продвижение
+      <div class="services-block__card">
+        <div class="services-block__icon">
+          <img src="{% static 'images/tech/bug.svg' %}" alt="">
         </div>
+        <h3 class="services-block__card-title">Automated<br>testing</h3>
+      </div>
 
-        <div class="sales-service__info">
-          <p class="sales-service__text">
-            Повышает доверие к бренду, стимулирует повторные покупки
-            и рекомендации интернет-магазину, что напрямую влияет на LTV.
-          </p>
-
-          <div class="sales-service__tags">
-            <span>Аудитории вокруг бренда</span>
-            <span>Возврат клиентов</span>
-            <span>Работа с отзывами</span>
-          </div>
+      <div class="services-block__card">
+        <div class="services-block__icon">
+          <img src="{% static 'images/tech/ui.svg' %}" alt="">
         </div>
+        <h3 class="services-block__card-title">UI/UX Design</h3>
+      </div>
 
+      <div class="services-block__card">
+        <div class="services-block__icon">
+          <img src="{% static 'images/tech/brand.svg' %}" alt="">
+        </div>
+        <h3 class="services-block__card-title">Branding</h3>
+      </div>
 
-      </article>
+      <div class="services-block__card">
+        <div class="services-block__icon">
+          <img src="{% static 'images/tech/copywrite.svg' %}" alt="">
+        </div>
+        <h3 class="services-block__card-title">Copywriting</h3>
+      </div>
 
     </div>
+
   </div>
 </section>
 
 <section class="workflow">
-  <div class="container">
-    <div class="workflow__top">
-      <div class="workflow__head">
-        <p class="workflow__label">Первые шаги сотрудничества с нами</p>
-        <h2 class="workflow__title">
-          Как мы начинаем продвижение?
-        </h2>
-      </div>
+    <div class="container">
+        <div class="workflow__top">
+            <div class="workflow__head">
+                <p class="workflow__label">Первые шаги сотрудничества с нами</p>
+                <h2 class="workflow__title">Как мы начинаем продвижение?</h2>
+            </div>
 
-      <a href="#" class="workflow__cta">Бесплатная консультация</a>
+            <a href="#" class="workflow__cta">Бесплатная консультация</a>
+        </div>
+
+        <div class="workflow__line">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <div class="workflow__grid">
+            <article class="workflow-card">
+                <h3 class="workflow-card__title">Аудит бизнеса</h3>
+                <p class="workflow-card__text">
+                    Анализируем ваш интернет-магазин: нишу, аналитику продаж,
+                    источники трафика и текущую рекламу. Фиксируем сильные
+                    стороны и точки роста.
+                </p>
+            </article>
+
+            <article class="workflow-card">
+                <h3 class="workflow-card__title">Консультация</h3>
+                <p class="workflow-card__text">
+                    Проводим созвон, где изучаем потребности, цели бизнеса и
+                    KPI. Объясняем, какие инструменты дадут быстрый и
+                    долгосрочный результат.
+                </p>
+            </article>
+
+            <article class="workflow-card">
+                <h3 class="workflow-card__title">Предложение</h3>
+                <p class="workflow-card__text">
+                    Готовим коммерческое предложение: каналы продвижения,
+                    медиаплан, бюджеты, приоритеты и чёткие KPI.
+                </p>
+            </article>
+
+            <article class="workflow-card">
+                <h3 class="workflow-card__title">Старт работ</h3>
+                <p class="workflow-card__text">
+                    Согласовываем план и запускаем работы: настраиваем
+                    аналитику, готовим креативы, запускаем первые кампании и
+                    выстраиваем отчётность.
+                </p>
+            </article>
+        </div>
     </div>
-
-    <div class="workflow__line">
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-
-    <div class="workflow__grid">
-      <article class="workflow-card">
-        <h3 class="workflow-card__title">Аудит бизнеса</h3>
-        <p class="workflow-card__text">
-          Анализируем ваш интернет-магазин: нишу, аналитику продаж,
-          источники трафика и текущую рекламу. Фиксируем сильные стороны
-          и точки роста.
-        </p>
-      </article>
-
-      <article class="workflow-card">
-        <h3 class="workflow-card__title">Консультация</h3>
-        <p class="workflow-card__text">
-          Проводим созвон, где изучаем потребности, цели бизнеса и KPI.
-          Объясняем, какие инструменты дадут быстрый и долгосрочный результат.
-        </p>
-      </article>
-
-      <article class="workflow-card">
-        <h3 class="workflow-card__title">Предложение</h3>
-        <p class="workflow-card__text">
-          Готовим коммерческое предложение: каналы продвижения,
-          медиаплан, бюджеты, приоритеты и чёткие KPI.
-        </p>
-      </article>
-
-      <article class="workflow-card">
-        <h3 class="workflow-card__title">Старт работ</h3>
-        <p class="workflow-card__text">
-          Согласовываем план и запускаем работы: настраиваем аналитику,
-          готовим креативы, запускаем первые кампании и выстраиваем отчётность.
-        </p>
-      </article>
-    </div>
-  </div>
 </section>
 
 {% endblock %}

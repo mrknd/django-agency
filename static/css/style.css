@@ -215,6 +215,7 @@ button {
     color: #0d0d0d;
     font-size: 18px;
     font-family: "Unbounded", sans-serif;
+    font-weight: 500;
 }
 
 .btn--header:hover {
@@ -268,7 +269,7 @@ button {
     margin: 0;
     font-size: clamp(32px, 4vw, 52px);
     line-height: 1.15;
-    font-weight: 800;
+    font-weight: 500;
     color: #d0d0d0;
     position: relative;
     font-family: "Unbounded", sans-serif;
@@ -2252,7 +2253,7 @@ button {
     font-size: clamp(28px, 3vw, 42px);
     line-height: 1.05;
     font-weight: 800;
-    color: #ffffff;
+    color: #f3f3f3;
     font-family: "Unbounded", sans-serif;
 }
 
@@ -2881,7 +2882,7 @@ button {
 }
 
 .mission-card h4 {
-    color: #ffffff;
+    color: #f3f3f3;
     font-size: 20px;
     margin-bottom: 8px;
     font-family: "Unbounded", sans-serif;
@@ -3094,7 +3095,7 @@ button {
 .footer__col h4 {
     font-size: 22px;
     margin-bottom: 20px;
-    color: #ffffff;
+    color: #d8d8d8;
 }
 
 .footer__col a {
@@ -3719,7 +3720,7 @@ border-bottom:none;
   margin: 0 0 26px;
   font-size: clamp(40px, 5vw, 38px);
   line-height: 1.06;
-  font-weight: 800;
+  font-weight: 500;
   color: #d9d9d9;
   max-width: 760px;
   font-family: "Unbounded", sans-serif;
@@ -3790,9 +3791,9 @@ border-bottom:none;
   margin: 0 0 16px;
   font-size: 18px;
   line-height: 1.2;
-  font-weight: 700;
-  color: #f0f0f0;
-font-family: "Unbounded", sans-serif;
+  font-weight: 500;
+  color: #d9d9d9;
+  font-family: "Unbounded", sans-serif;
 }
 
 .seo-result-card__text {
@@ -3904,7 +3905,7 @@ font-family: "Unbounded", sans-serif;
   max-width: 760px;
   font-size: clamp(38px, 5vw, 48px);
   line-height: 1.06;
-  font-weight: 700;
+  font-weight: 500;
   color: #d8d8d8;
   font-family: "Unbounded", sans-serif;
 }
@@ -3947,8 +3948,8 @@ font-family: "Unbounded", sans-serif;
 .sales-service__name {
   font-size: 18px;
   line-height: 1.25;
-  font-weight: 800;
-  color: #f1f1f1;
+  font-weight: 500;
+  color: #d8d8d8;
   padding-top: 6px;
   font-family: "Unbounded", sans-serif;
 }
@@ -4126,7 +4127,7 @@ font-family: "Unbounded", sans-serif;
   margin: 0;
   font-size: clamp(38px, 5vw, 48px);
   line-height: 1.04;
-  font-weight: 800;
+  font-weight: 500;
   color: #d8d8d8;
   font-family: "Unbounded", sans-serif;
 }
@@ -4217,8 +4218,8 @@ font-family: "Unbounded", sans-serif;
   margin: 0 0 18px;
   font-size: 22px;
   line-height: 1.2;
-  font-weight: 700;
-  color: #f1f1f1;
+  font-weight: 500;
+  color: #d8d8d8;
   font-family: "Unbounded", sans-serif;
 }
 
@@ -4449,7 +4450,7 @@ body.modal-open {
     margin: 0 0 18px;
     font-size: clamp(40px, 5vw, 46px);
     line-height: 0.98;
-    font-weight: 800;
+    font-weight: 500;
     color: #f1f1f1;
     font-family: "Unbounded", sans-serif;
 }
@@ -4502,8 +4503,9 @@ body.modal-open {
     margin-bottom: 10px;
     color: var(--accent);
     font-size: 32px;
-    font-weight: 600;
+    font-weight: 500;
     line-height: 1;
+    font-family: "Unbounded", sans-serif;
 }
 
 .case-stat__label {
@@ -4552,7 +4554,7 @@ body.modal-open {
 .case-sidebar__value {
     color: #f1f1f1;
     font-size: 16px;
-    font-weight: 700;
+    font-weight: 500;
 }
 
 .case-article {
@@ -4571,7 +4573,7 @@ body.modal-open {
     color: #f1f1f1;
     font-size: 30px;
     line-height: 1.2;
-    font-weight: 700;
+    font-weight: 500;
     font-family: "Unbounded", sans-serif;
 }
 
@@ -5430,7 +5432,7 @@ body.modal-open {
 .blog-article ul,
 .blog-article ol {
     margin: 0 0 24px 20px;
-    color: rgba(255,255,255,0.9);
+    color: var(--accent);
 }
 
 .blog-article li {
@@ -5578,4 +5580,88 @@ body.modal-open {
         white-space: pre-wrap;
         word-break: break-word;
     }
+}
+/* ------------------------------------------------------------ */
+.services-block {
+  padding: 110px 0 120px;
+}
+
+.services-block__title {
+  margin: 0 0 34px;
+  text-align: center;
+  font-size: 56px;
+  font-weight: 500;
+  font-family: "Unbounded", sans-serif;
+  color: #d8d8d8;
+}
+
+.services-block__text {
+  max-width: 980px;
+  margin: 0 auto 90px;
+  text-align: center;
+  font-size: 18px;
+  line-height: 1.4;
+  color: #b2b2b2;
+}
+
+.services-block__grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 70px 40px;
+}
+
+.services-block__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.services-block__icon {
+  width: 72px;
+  height: 72px;
+  margin-bottom: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.services-block__icon img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.services-block__card-title {
+  margin: 0;
+  font-size: 22px;
+  line-height: 1.35;
+  font-weight: 400;
+}
+
+/* responsive */
+
+@media (max-width: 1200px) {
+  .services-block__grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 992px) {
+  .services-block__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .services-block__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .services-block__title {
+    font-size: 30px;
+  }
+
+  .services-block__text {
+    font-size: 16px;
+  }
 }

@@ -92,3 +92,21 @@ class BlogPost(models.Model):
 
     def get_absolute_url(self):
         return reverse('blog_detail', kwargs={'slug': self.slug})
+
+
+class Contacts(models.Model):
+    email = models.EmailField('Корпоративная почта')
+    phone = models.CharField('Телефон', max_length=30)
+
+    telegram = models.URLField('Telegram (личный)', blank=True, null=True)
+    telegram_channel = models.URLField('Telegram канал', blank=True, null=True)
+
+    instagram = models.URLField('Instagram', blank=True, null=True)
+    threads = models.URLField('Threads', blank=True, null=True)
+
+    class Meta:
+        verbose_name = 'Контакты'
+        verbose_name_plural = 'Контакты'
+
+    def __str__(self):
+        return 'Контакты сайта'
