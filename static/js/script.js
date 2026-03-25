@@ -315,3 +315,35 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 });
+// -------------------------------------- BLOG Zmist
+document.addEventListener('DOMContentLoaded', function () {
+    const links = document.querySelectorAll('.blog-toc__link');
+    const sections = Array.from(links)
+        .map(link => document.querySelector(link.getAttribute('href')))
+        .filter(Boolean);
+
+    function setActiveLink() {
+        let currentSection = null;
+
+        sections.forEach(section => {
+            const rect = section.getBoundingClientRect();
+            if (rect.top <= 140) {
+                currentSection = section;
+            }
+        });
+
+        links.forEach(link => link.classList.remove('active'));
+
+        if (currentSection) {
+            const activeLink = document.querySelector(
+                `.blog-toc__link[href="#${currentSection.id}"]`
+            );
+            if (activeLink) {
+                activeLink.classList.add('active');
+            }
+        }
+    }
+
+    window.addEventListener('scroll', setActiveLink);
+    setActiveLink();
+});

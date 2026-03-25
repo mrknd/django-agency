@@ -1,0 +1,630 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Кейсы | NML Digital{% endblock %}
+
+{% block content %}
+
+            <section class="about-agency">
+                <div class="container">
+                    <div class="about-agency__grid">
+                        <div class="about-agency__content">
+                            <div class="about-agency__label">
+                                NML Digital – кто мы?
+                            </div>
+
+                            <h2 class="about-agency__title">
+                                Агентство
+                                <span class="hero__title-accent">Digital</span>
+                                <br />
+                                маркетинга №1
+                            </h2>
+
+                            <p class="about-agency__text">
+                                NML Digital — это маркетинговое агентство,
+                                основанное в Днепре, с амбициями менять
+                                украинский бизнес через проверенные
+                                digital-услуги. Мы работаем с компаниями из всех
+                                регионов Украины, помогая им масштабироваться и
+                                находить новых клиентов.
+                            </p>
+
+                            <p class="about-agency__text">
+                                Сегодня в нашей команде более 100 опытных
+                                специалистов, которые ежедневно работают над
+                                успехом наших клиентов. Наш опыт охватывает
+                                более 50 ниш — от малого локального бизнеса до
+                                крупных брендов. Мы выстраиваем маркетинг,
+                                который действительно работает, и создаём
+                                решения, приносящие реальный результат.
+                            </p>
+                        </div>
+
+                        <div class="about-agency__image">
+                            <img
+                                src="{% static 'images/team.png' %}"
+                                alt="Команда NML Digital"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="trusted">
+                <div class="container">
+                    <h2 class="trusted__title">
+                        Нам доверяют
+                        <span class="trusted_span">лидеры индустрий</span>
+                    </h2>
+
+                    <div class="trusted__rating">
+                        <div class="trusted__stars">★★★★★</div>
+
+                        <div class="trusted__text">
+                            Уже 200+ клиентов убедились в нашей эффективности
+                        </div>
+                    </div>
+
+                    <div class="trusted__logos">
+                        <img src="{% static 'images/brands/brand1.png' %}" alt="Notino" />
+                        <img src="{% static 'images/brands/brand2.png' %}" alt="Calzedonia" />
+                        <img src="{% static 'images/brands/brand6.png' %}" alt="Socar" />
+                        <img src="{% static 'images/brands/brand8.png' %}" alt="Moyo" />
+                        <img src="{% static 'images/brands/brand9.png' %}" alt="MacPaw" />
+                    </div>
+                </div>
+            </section>
+
+            <section class="vacancies">
+                <div class="container">
+                    <div class="vacancies__top">
+                        <h2 class="vacancies__title">
+                            <span class="hero__title-accent">Актуальные</span>
+                            вакансии
+                        </h2>
+
+                        <p class="vacancies__subtitle">
+                            Мы ценим корпоративную культуру, поэтому тщательно
+                            подбираем людей, которые становятся частью нашей
+                            команды.
+                        </p>
+                    </div>
+
+                    <div class="vacancies__list">
+                        <article class="vacancy-item active">
+                            <button class="vacancy-item__head" type="button">
+                                <div class="vacancy-item__head-left">
+                                    <span class="vacancy-item__city"
+                                        >Удаленная работа</span
+                                    >
+                                    <h3 class="vacancy-item__name">
+                                        Проект-менеджер
+                                    </h3>
+                                </div>
+
+                                <div class="vacancy-item__preview">
+                                    Проект-менеджер — это маркетолог, который
+                                    управляет командой специалистов по различным
+                                    направлениям digital-маркетинга.
+                                </div>
+
+                                <span class="vacancy-item__icon"></span>
+                            </button>
+
+                            <div class="vacancy-item__body">
+                                <div class="vacancy-item__body-inner">
+                                    <div class="vacancy-item__content">
+                                        <div
+                                            class="vacancy-item__col vacancy-item__col--left"
+                                        >
+                                            <h4
+                                                class="vacancy-item__section-title"
+                                            >
+                                                ЗП от 190 000 руб.
+                                            </h4>
+                                        </div>
+
+                                        <div
+                                            class="vacancy-item__col vacancy-item__col--right"
+                                        >
+                                            <div class="vacancy-item__block">
+                                                <h5
+                                                    class="vacancy-item__mini-title"
+                                                >
+                                                    Тип занятости
+                                                </h5>
+                                                <p
+                                                    class="vacancy-item__mini-text"
+                                                >
+                                                    Удаленная работа
+                                                </p>
+                                            </div>
+
+                                            <div class="vacancy-item__block">
+                                                <h5
+                                                    class="vacancy-item__mini-title"
+                                                >
+                                                    Требования
+                                                </h5>
+                                                <ol
+                                                    class="vacancy-item__points"
+                                                >
+                                                    <li>
+                                                        Опыт работы в
+                                                        digital-агентстве от 1
+                                                        года.
+                                                    </li>
+                                                    <li>
+                                                        Базовые знания
+                                                        аналитики: Google
+                                                        Analytics, Meta Ads,
+                                                        Google Ads.
+                                                    </li>
+                                                    <li>
+                                                        Понимание SEO,
+                                                        контекстной рекламы и
+                                                        SMM.
+                                                    </li>
+                                                    <li>
+                                                        Умение управлять
+                                                        задачами, людьми и
+                                                        дедлайнами.
+                                                    </li>
+                                                    <li>
+                                                        Умение работать в режиме
+                                                        многозадачности.
+                                                    </li>
+                                                </ol>
+                                            </div>
+
+                                            <div class="vacancy-item__block">
+                                                <h5
+                                                    class="vacancy-item__mini-title"
+                                                >
+                                                    Чем нужно заниматься
+                                                </h5>
+                                                <ol
+                                                    class="vacancy-item__points"
+                                                >
+                                                    <li>
+                                                        Организовывать работу
+                                                        команды над проектом.
+                                                    </li>
+                                                    <li>
+                                                        Контролировать дедлайны,
+                                                        постановку задач и
+                                                        результат.
+                                                    </li>
+                                                    <li>
+                                                        Коммуницировать с
+                                                        клиентом и улучшать
+                                                        проект вместе с
+                                                        командой.
+                                                    </li>
+                                                </ol>
+                                            </div>
+
+                                            <a
+                                                href="#"
+                                                class="vacancy-item__btn"
+                                            >
+                                                Отправить отзыв
+                                                <span>→</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="vacancy-item">
+                            <button class="vacancy-item__head" type="button">
+                                <div class="vacancy-item__head-left">
+                                    <span class="vacancy-item__city"
+                                        >Удаленная работа</span
+                                    >
+                                    <h3 class="vacancy-item__name">
+                                        Аккаунт-менеджер
+                                    </h3>
+                                </div>
+
+                                <div class="vacancy-item__preview">
+                                    Требуется специалист, который
+                                                будет поддерживать тесную связь
+                                                с клиентами, контролировать
+                                                процессы и помогать команде
+                                                достигать результатов по каждому
+                                                проекту.
+                                </div>
+
+                                <span class="vacancy-item__icon"></span>
+                            </button>
+
+                            <div class="vacancy-item__body">
+                                <div class="vacancy-item__body-inner">
+                                    <div class="vacancy-item__content">
+                                        <div
+                                            class="vacancy-item__col vacancy-item__col--left"
+                                        >
+                                            <h4
+                                                class="vacancy-item__section-title"
+                                            >
+                                                ЗП от 120 000 руб.
+                                            </h4>
+                                        </div>
+
+                                        <div
+                                            class="vacancy-item__col vacancy-item__col--right"
+                                        >
+                                            
+
+                                            <div class="vacancy-item__block">
+                                                <h5
+                                                    class="vacancy-item__mini-title"
+                                                >
+                                                    Тип занятости
+                                                </h5>
+                                                <p
+                                                    class="vacancy-item__mini-text"
+                                                >
+                                                    Полная занятость
+                                                </p>
+                                            </div>
+
+                                            <div class="vacancy-item__block">
+                                                <h5
+                                                    class="vacancy-item__mini-title"
+                                                >
+                                                    Требования
+                                                </h5>
+                                                <ol
+                                                    class="vacancy-item__points"
+                                                >
+                                                    <li>
+                                                        Опыт в ведении клиентов
+                                                        или аккаунтинга.
+                                                    </li>
+                                                    <li>
+                                                        Сильные навыки
+                                                        коммуникации и
+                                                        презентации.
+                                                    </li>
+                                                    <li>
+                                                        Умение работать с
+                                                        возражениями и задачами
+                                                        клиента.
+                                                    </li>
+                                                </ol>
+                                            </div>
+
+                                            <div class="vacancy-item__block">
+                                                <h5
+                                                    class="vacancy-item__mini-title"
+                                                >
+                                                    Чем нужно заниматься
+                                                </h5>
+                                                <ol
+                                                    class="vacancy-item__points"
+                                                >
+                                                    <li>
+                                                        Быть главной точкой
+                                                        контакта для клиента.
+                                                    </li>
+                                                    <li>
+                                                        Контролировать задачи и
+                                                        статусы по проектам.
+                                                    </li>
+                                                    <li>
+                                                        Развивать долгосрочные
+                                                        отношения с клиентами.
+                                                    </li>
+                                                </ol>
+                                            </div>
+
+                                            <a
+                                                href="#"
+                                                class="vacancy-item__btn"
+                                            >
+                                                Отправить отзыв
+                                                <span>→</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="vacancy-item">
+                            <button class="vacancy-item__head" type="button">
+                                <div class="vacancy-item__head-left">
+                                    <span class="vacancy-item__city"
+                                        >Офис / Удаленно</span
+                                    >
+                                    <h3 class="vacancy-item__name">
+                                        SMM-специалист
+                                    </h3>
+                                </div>
+
+                                <div class="vacancy-item__preview">
+                                    Требуется SMM-специалист, который поможет
+                                    брендам развиваться с помощью контента,
+                                    аналитики и эффективной коммуникации.
+                                </div>
+
+                                <span class="vacancy-item__icon"></span>
+                            </button>
+
+                            <div class="vacancy-item__body">
+                                <div class="vacancy-item__body-inner">
+                                    <div class="vacancy-item__content">
+                                        <div
+                                            class="vacancy-item__col vacancy-item__col--left"
+                                        >
+                                            <h4
+                                                class="vacancy-item__section-title"
+                                            >
+                                                ЗП от 150 000 руб.
+                                            </h4>
+                                        </div>
+
+                                        <div
+                                            class="vacancy-item__col vacancy-item__col--right"
+                                        >
+                                            <p class="vacancy-item__text">
+                                                Ищем человека, который умеет
+                                                разрабатывать контент-стратегии,
+                                                вести социальные сети и
+                                                понимать, как контент влияет на
+                                                развитие бренда.
+                                            </p>
+
+                                            <div class="vacancy-item__block">
+                                                <h5
+                                                    class="vacancy-item__mini-title"
+                                                >
+                                                    Тип занятости
+                                                </h5>
+                                                <p
+                                                    class="vacancy-item__mini-text"
+                                                >
+                                                    Гибкий формат
+                                                </p>
+                                            </div>
+
+                                            <div class="vacancy-item__block">
+                                                <h5
+                                                    class="vacancy-item__mini-title"
+                                                >
+                                                    Требования
+                                                </h5>
+                                                <ol
+                                                    class="vacancy-item__points"
+                                                >
+                                                    <li>
+                                                        Опыт в ведении Instagram
+                                                        / Facebook / TikTok.
+                                                    </li>
+                                                    <li>
+                                                        Понимание
+                                                        контент-планирования и
+                                                        аналитики.
+                                                    </li>
+                                                    <li>
+                                                        Навыки копирайтинга и
+                                                        генерации идей.
+                                                    </li>
+                                                </ol>
+                                            </div>
+
+                                            <div class="vacancy-item__block">
+                                                <h5
+                                                    class="vacancy-item__mini-title"
+                                                >
+                                                    Чем нужно заниматься
+                                                </h5>
+                                                <ol
+                                                    class="vacancy-item__points"
+                                                >
+                                                    <li>
+                                                        Разрабатывать
+                                                        контент-плани и рубрики.
+                                                    </li>
+                                                    <li>
+                                                        Контролировать создание
+                                                        контента.
+                                                    </li>
+                                                    <li>
+                                                        Анализировать результаты
+                                                        и улучшать стратегию.
+                                                    </li>
+                                                </ol>
+                                            </div>
+
+                                            <a
+                                                href="#"
+                                                class="vacancy-item__btn"
+                                            >
+                                                Отправить отзыв
+                                                <span>→</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="vacancy-item">
+                            <button class="vacancy-item__head" type="button">
+                                <div class="vacancy-item__head-left">
+                                    <span class="vacancy-item__city"
+                                        >Офис / Удаленно</span
+                                    >
+                                    <h3 class="vacancy-item__name">
+                                        UGC-креатор
+                                    </h3>
+                                </div>
+
+                                <div class="vacancy-item__preview">
+                                    Мы — динамичная команда, которая помогает
+                                    брендам в сферах моды, красоты, лайфстайла,
+                                    технологий и электронной коммерции
+                                    развиваться благодаря аутентичному и
+                                    актуальному UGC-контенту. Ищем креатора,
+                                    который не просто снимает, а создает
+                                    контент, который продает и выглядит «как от
+                                    реального человека».
+                                </div>
+
+                                <span class="vacancy-item__icon"></span>
+                            </button>
+
+                            <div class="vacancy-item__body">
+                                <div class="vacancy-item__body-inner">
+                                    <div class="vacancy-item__content">
+                                        <div
+                                            class="vacancy-item__col vacancy-item__col--left"
+                                        >
+                                            <h4
+                                                class="vacancy-item__section-title"
+                                            >
+                                                ЗП от 130 000 руб.
+                                            </h4>
+                                        </div>
+
+                                        <div
+                                            class="vacancy-item__col vacancy-item__col--right"
+                                        >
+                                            <p class="vacancy-item__text">
+                                                Ищем человека, который умеет
+                                                разрабатывать контент-стратегии,
+                                                вести социальные сети и
+                                                понимать, как контент влияет на
+                                                развитие бренда.
+                                            </p>
+
+                                            <div class="vacancy-item__block">
+                                                <h5
+                                                    class="vacancy-item__mini-title"
+                                                >
+                                                    Тип занятости
+                                                </h5>
+                                                <p
+                                                    class="vacancy-item__mini-text"
+                                                >
+                                                    Гибкий формат
+                                                </p>
+                                            </div>
+
+                                            <div class="vacancy-item__block">
+                                                <h5
+                                                    class="vacancy-item__mini-title"
+                                                >
+                                                    Требования
+                                                </h5>
+                                                <ol
+                                                    class="vacancy-item__points"
+                                                >
+                                                    <li>
+                                                        Быть основным специалистом по созданию контента для клиентов — снимать фото и видео (вертикальные ролики длительностью до 60 секунд, обзоры, распаковки, «day in the life», «до/после», лайфстайл-сценарии и т. д.).
+                                                    </li>
+                                                    <li>
+                                                        Понимание
+                                                        контент-планирования и
+                                                        аналитики.
+                                                    </li>
+                                                    <li>
+                                                        Контролировать весь процесс от идеи до готового файла: анализ брифа, съемка на телефон/камеру, базовый монтаж (склейка, субтитры, музыка, темп, эффекты).
+                                                    </li>
+                                                </ol>
+                                            </div>
+
+                                            <div class="vacancy-item__block">
+                                                <h5
+                                                    class="vacancy-item__mini-title"
+                                                >
+                                                    Чем нужно заниматься
+                                                </h5>
+                                                <ol
+                                                    class="vacancy-item__points"
+                                                >
+                                                    <li>
+                                                        Отслеживать тренды в TikTok/Reels/Shorts и адаптировать их к задачам клиента.
+                                                    </li>
+                                                    <li>
+                                                        Опыт работы в качестве UGC-креатора, контент-креатора, SMM-специалиста или блогера (от 6 до 12 месяцев — портфолио обязательно).
+                                                    </li>
+                                                    <li>
+                                                        Базовый монтаж (CapCut, InShot, VN, Premiere Rush или аналогичные программы — достаточно).
+                                                    </li>
+                                                </ol>
+                                            </div>
+
+                                            <a
+                                                href="#"
+                                                class="vacancy-item__btn"
+                                            >
+                                                Отправить отзыв
+                                                <span>→</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section class="values">
+                <div class="container">
+                    <div class="values__top">
+                        <h2 class="values__title">Наши <span class="hero__title-accent"
+                                >ценности</span></h2>
+
+                        <p class="values__text">
+                            Корпоративная культура NML Digital — это целая
+                            экосистема, работа которой возможна благодаря нашим
+                            ценностям.
+                        </p>
+                    </div>
+
+                    <div class="values__grid">
+                        <div class="value-card">
+                            <h3>Высокие цели</h3>
+                            <p>
+                                Большие результаты достигаются теми, кто
+                                стремится становиться лучше каждый день. Мы
+                                ставим амбициозные цели и работаем на результат.
+                            </p>
+                        </div>
+
+                        <div class="value-card">
+                            <h3>Установка на рост</h3>
+                            <p>
+                                Открытость новым задачам, постоянное развитие и
+                                стремление становиться лучше помогают нам
+                                достигать высоких результатов.
+                            </p>
+                        </div>
+
+                        <div class="value-card">
+                            <h3>Упорство</h3>
+                            <p>
+                                Готовность работать над сложными задачами и
+                                доводить проекты до результата — ключ к успеху
+                                наших клиентов.
+                            </p>
+                        </div>
+
+                        <div class="value-card">
+                            <h3>Скромность</h3>
+                            <p>
+                                Мы работаем как команда. Для нас всегда важнее
+                                «мы», чем «я».
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+{% endblock %}

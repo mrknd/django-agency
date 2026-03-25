@@ -20,6 +20,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core',
+    'django_ckeditor_5'
 ]
 
 MIDDLEWARE = [
@@ -52,10 +53,17 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
+# DATABASES = {
+#     "default": dj_database_url.config(
+#         default=os.environ.get("DATABASE_URL")
+#     )
+# }
+
 DATABASES = {
-    "default": dj_database_url.config(
-        default=os.environ.get("DATABASE_URL")
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -84,6 +92,42 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+CKEDITOR_5_CONFIGS = {
+    'default': {
+        'toolbar': [
+            'heading', '|',
+            'bold', 'italic', 'link', '|',
+            'bulletedList', 'numberedList', '|',
+            'blockQuote', 'insertTable', '|',
+            'undo', 'redo'
+        ],
+        'height': 400,
+        'width': '100%',
+    },
+    'extends': {
+        'blockToolbar': [
+            'paragraph',
+            'heading1',
+            'heading2',
+            'heading3',
+            '|',
+            'bulletedList',
+            'numberedList',
+            '|',
+            'blockQuote',
+        ],
+        'toolbar': [
+            'heading', '|',
+            'bold', 'italic', 'underline', 'strikethrough', '|',
+            'link', 'insertImage', 'insertTable', '|',
+            'bulletedList', 'numberedList', '|',
+            'undo', 'redo'
+        ],
+        'height': 500,
+        'width': '100%',
+    }
+}
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
