@@ -1,21 +1,31 @@
 #!/usr/bin/env bash
 set -o errexit
 
-# Встановлюємо залежності
+echo "→ Встановлюємо залежності..."
 pip install -r requirements.txt
 
-# Збираємо статичні файли
+echo "→ Збираємо статичні файли..."
 python manage.py collectstatic --noinput
 
-# Виконуємо міграції
+echo "→ Виконуємо міграції..."
 python manage.py migrate
 
 # ==================== СТВОРЕННЯ SUPERUSER ====================
-if [[ -n "$CREATE_SUPERUSER" && "$CREATE_SUPERUSER" == "true" ]]; then
-    echo "→ Створюємо суперюзера..."
+if [[ "$CREATE_SUPERUSER" == "true" ]]; then
+    echo "→ Створюємо суперюзера через shell..."
 
-    python manage.py createsuperuser --noinput || echo "Суперюзер вже існує або сталася помилка"
-
+    python manage.py shell -c "
+from django.contrib.auth.models import User
+if not User.objects.filter(username='admin').exists():
+    User.objects.create_superuser(
+        username='admin',
+        email='admin@example.com',
+        password='12345678'
+    )
+    print('✅ Superuser "admin" успішно створений!')
+else:
+    print('⚠️ Superuser "admin" вже існує.')
+"
 else
     echo "→ CREATE_SUPERUSER не активовано — суперюзер не створюється"
 fi
