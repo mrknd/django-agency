@@ -3,9 +3,14 @@
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
 
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             margin: 0;
             font-family: Arial, sans-serif;
@@ -14,30 +19,58 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
+            padding: 20px;
         }
 
         .login-box {
+            width: 100%;
+            max-width: 420px;
             background: #111;
-            padding: 40px;
-            border-radius: 20px;
-            width: 350px;
-            box-shadow: 0 0 40px rgba(255, 0, 100, 0.2);
+            padding: 36px 32px;
+            border-radius: 24px;
+            box-shadow: 0 0 40px rgba(255, 47, 109, 0.2);
         }
 
-        h2 {
-            margin-bottom: 20px;
-            color: #ff2f6d;
+        .logo {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .logo img {
+            width: 120px;
+            height: auto;
+            display: inline-block;
+            filter: drop-shadow(0 0 10px rgba(255, 47, 109, 0.5));
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            width: 100%;
+        }
+
+        input,
+        button {
+            width: 100%;
+            display: block;
+            margin: 0;
+            box-sizing: border-box;
         }
 
         input {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 15px;
-            border-radius: 10px;
+            height: 52px;
+            padding: 0 16px;
+            border-radius: 12px;
             border: none;
             background: #222;
             color: #fff;
+            font-size: 16px;
+        }
+
+        input::placeholder {
+            color: #8d8d8d;
         }
 
         input:focus {
@@ -46,44 +79,47 @@
         }
 
         button {
-            width: 100%;
-            padding: 12px;
+            height: 54px;
             border-radius: 999px;
             border: none;
             background: #ff2f6d;
             color: #000;
-            font-weight: bold;
+            font-weight: 700;
+            font-size: 16px;
             cursor: pointer;
-            transition: 0.3s;
+            transition: 0.2s;
         }
 
         button:hover {
-            opacity: 0.85;
+            opacity: 0.9;
         }
 
         .error {
             color: #ff4d6d;
             margin-bottom: 10px;
+            text-align: center;
         }
-        .logo {
-    text-align: center;
-    margin-bottom: 20px;
-}
 
-.logo img {
-    width: 120px;
-    height: auto;
-    object-fit: contain;
-    filter: drop-shadow(0 0 10px rgba(255, 47, 109, 0.5));
-}
+        /* 📱 Мобілка */
+        @media (max-width: 480px) {
+            .login-box {
+                padding: 28px 20px;
+                border-radius: 20px;
+            }
+
+            .logo img {
+                width: 100px;
+            }
+        }
     </style>
 </head>
 <body>
 
 <div class="login-box">
+
     <div class="logo">
-    <img src="{% static 'images/logo.svg' %}" alt="Logo">
-</div>
+        <img src="{% static 'images/logo.svg' %}" alt="Logo">
+    </div>
 
     {% if error %}
         <div class="error">{{ error }}</div>
@@ -95,6 +131,7 @@
         <input type="password" name="password" placeholder="Пароль" required>
         <button type="submit">Увійти</button>
     </form>
+
 </div>
 
 </body>

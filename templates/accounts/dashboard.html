@@ -1,570 +1,698 @@
 {% load static %}
-<!doctype html>
+<!DOCTYPE html>
 <html lang="uk">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>CRM Dashboard</title>
-        <style>
-            * {
-                box-sizing: border-box;
-            }
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRM Dashboard</title>
 
-            body {
-                margin: 0;
-                font-family: Arial, sans-serif;
-                background: #000;
-                color: #fff;
-            }
+    <style>
+        * {
+            box-sizing: border-box;
+        }
 
+        :root {
+            --bg: #06070a;
+            --glass: rgba(255, 255, 255, 0.06);
+            --glass-strong: rgba(255, 255, 255, 0.1);
+            --stroke: rgba(255, 255, 255, 0.12);
+            --text: #ffffff;
+            --muted: #b9bfd1;
+            --pink: #ff2f6d;
+            --pink-soft: rgba(255, 47, 109, 0.18);
+            --dark-card: rgba(10, 12, 18, 0.55);
+            --shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+            --blur: blur(20px);
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(circle at 15% 20%, rgba(255, 47, 109, 0.18), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(255, 47, 109, 0.1), transparent 22%),
+                radial-gradient(circle at 70% 85%, rgba(95, 64, 255, 0.12), transparent 20%),
+                linear-gradient(135deg, #050608 0%, #090b10 35%, #07080d 100%);
+            min-height: 100vh;
+        }
+
+        .page {
+            min-height: 100vh;
+            display: flex;
+            gap: 24px;
+            padding: 24px;
+        }
+
+        .glass {
+            background: var(--dark-card);
+            backdrop-filter: var(--blur);
+            -webkit-backdrop-filter: var(--blur);
+            border: 1px solid var(--stroke);
+            box-shadow: var(--shadow);
+        }
+
+        .main {
+            flex: 1;
+            border-radius: 28px;
+            padding: 28px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .main::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(135deg, rgba(255,255,255,0.06), transparent 30%),
+                linear-gradient(315deg, rgba(255,47,109,0.08), transparent 35%);
+            pointer-events: none;
+        }
+
+        .sidebar {
+            width: 340px;
+            border-radius: 28px;
+            padding: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sidebar::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(180deg, rgba(255,255,255,0.08), transparent 25%),
+                linear-gradient(0deg, rgba(255,47,109,0.06), transparent 30%);
+            pointer-events: none;
+        }
+
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .brand img {
+            width: 92px;
+            height: auto;
+            filter: drop-shadow(0 0 12px rgba(255, 47, 109, 0.45));
+        }
+
+        .brand-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .brand-label {
+            font-size: 12px;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 1.3px;
+        }
+
+        .brand-title {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .user-chip {
+            padding: 12px 16px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255,255,255,0.08);
+            color: #fff;
+            font-size: 14px;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero {
+            position: relative;
+            z-index: 1;
+            padding: 28px;
+            border-radius: 26px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            margin-bottom: 22px;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 240px;
+            height: 240px;
+            background: radial-gradient(circle, rgba(255,47,109,0.24), transparent 65%);
+            pointer-events: none;
+        }
+
+        .hero-label {
+            display: inline-block;
+            margin-bottom: 14px;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: rgba(255, 47, 109, 0.12);
+            border: 1px solid rgba(255, 47, 109, 0.18);
+            color: #ff5b8f;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            margin: 0 0 12px;
+            font-size: 48px;
+            line-height: 1.05;
+            font-weight: 800;
+        }
+
+        .hero h1 span {
+            color: var(--pink);
+        }
+
+        .hero p {
+            margin: 0;
+            max-width: 760px;
+            color: var(--muted);
+            font-size: 17px;
+            line-height: 1.7;
+        }
+
+        .grid {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+            gap: 20px;
+        }
+
+        .card {
+            border-radius: 24px;
+            padding: 22px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.28);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.05), transparent 35%);
+            pointer-events: none;
+        }
+
+        .card-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: #ff5b8f;
+            margin-bottom: 14px;
+        }
+
+        .card-title {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .card-text {
+            color: var(--muted);
+            line-height: 1.7;
+            font-size: 15px;
+        }
+
+        .status-list {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .status-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 14px 16px;
+            border-radius: 18px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .status-tag {
+            padding: 8px 12px;
+            border-radius: 999px;
+            background: rgba(255, 47, 109, 0.14);
+            color: #ff6f9c;
+            font-size: 12px;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .copy-wrap {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin-top: 18px;
+        }
+
+        .copy-field {
+            padding: 14px;
+            border-radius: 18px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .copy-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.1px;
+            color: #ff5b8f;
+            margin-bottom: 8px;
+        }
+
+        .copy-input {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .copy-value {
+            flex: 1;
+            min-width: 0;
+            padding: 14px 16px;
+            border-radius: 14px;
+            background: rgba(0,0,0,0.25);
+            border: 1px solid rgba(255,255,255,0.06);
+            color: #fff;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .copy-btn {
+            border: none;
+            min-width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            cursor: pointer;
+            background: rgba(255, 47, 109, 0.14);
+            border: 1px solid rgba(255, 47, 109, 0.22);
+            color: #ff7aa8;
+            font-size: 18px;
+            transition: 0.2s ease;
+        }
+
+        .copy-btn:hover {
+            transform: translateY(-1px);
+            background: rgba(255, 47, 109, 0.2);
+        }
+
+        .copy-note {
+            margin-top: 10px;
+            color: #98a0b4;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .sidebar-title {
+            position: relative;
+            z-index: 1;
+            font-size: 22px;
+            font-weight: 800;
+            margin-bottom: 18px;
+        }
+
+        .sidebar-subtitle {
+            position: relative;
+            z-index: 1;
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .locked-menu {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .locked-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+            padding: 16px;
+            border-radius: 20px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
+            opacity: 0.72;
+            cursor: not-allowed;
+            user-select: none;
+            pointer-events: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .locked-item::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            pointer-events: none;
+        }
+
+        .locked-left {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .locked-name {
+            font-size: 17px;
+            font-weight: 700;
+            color: #eef1fb;
+        }
+
+        .locked-desc {
+            font-size: 13px;
+            color: #98a0b4;
+        }
+
+        .locked-meta {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .locked-badge {
+            padding: 7px 10px;
+            border-radius: 999px;
+            background: rgba(255, 47, 109, 0.14);
+            border: 1px solid rgba(255, 47, 109, 0.2);
+            color: #ff79a7;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+
+        .lock-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            background: rgba(255,255,255,0.07);
+            border: 1px solid rgba(255,255,255,0.08);
+            font-size: 16px;
+        }
+
+        .premium-box {
+            position: relative;
+            z-index: 1;
+            margin-top: 20px;
+            padding: 18px;
+            border-radius: 20px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
+            color: var(--muted);
+            line-height: 1.7;
+            font-size: 14px;
+        }
+
+        .premium-box strong {
+            color: #fff;
+        }
+
+        @media (max-width: 1100px) {
             .page {
-                min-height: 100vh;
-                display: flex;
-            }
-
-            .main-content {
-                flex: 1;
-                padding: 20px;
-                background:
-                    radial-gradient(
-                        circle at top left,
-                        rgba(255, 47, 109, 0.12),
-                        transparent 30%
-                    ),
-                    radial-gradient(
-                        circle at bottom right,
-                        rgba(255, 47, 109, 0.08),
-                        transparent 30%
-                    ),
-                    #000;
-            }
-
-            .topbar {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                margin-bottom: 40px;
-            }
-
-            .brand {
-                display: flex;
-                align-items: center;
-                gap: 14px;
-            }
-
-            .brand img {
-                width: 90px;
-                height: auto;
-                object-fit: contain;
-            }
-
-            .brand-title {
-                font-size: 14px;
-                color: #bfbfbf;
-                letter-spacing: 1px;
-                text-transform: uppercase;
-            }
-
-            .welcome-box {
-                background: linear-gradient(
-                    135deg,
-                    rgba(255, 47, 109, 0.14),
-                    rgba(255, 47, 109, 0.04)
-                );
-                border: 1px solid rgba(255, 47, 109, 0.28);
-                border-radius: 28px;
-                padding: 34px;
-                margin-bottom: 28px;
-                box-shadow: 0 0 30px rgba(255, 47, 109, 0.12);
-            }
-
-            .welcome-box h1 {
-                margin: 0 0 12px;
-                font-size: 48px;
-                line-height: 1.05;
-                font-weight: 800;
-            }
-
-            .welcome-box h1 span {
-                color: #ff2f6d;
-            }
-
-            .welcome-box p {
-                margin: 0;
-                color: #d3d3d3;
-                font-size: 19px;
-                max-width: 780px;
-                line-height: 1.7;
-            }
-
-            .crm-grid {
-                display: grid;
-                grid-template-columns: repeat(3, 1fr);
-                gap: 20px;
-                margin-top: 28px;
-            }
-
-            .card {
-                background: #111;
-                border: 1px solid rgba(255, 255, 255, 0.05);
-                border-radius: 24px;
-                padding: 22px;
-                min-height: 170px;
-                position: relative;
-                overflow: hidden;
-            }
-
-            .card::before {
-                content: "";
-                position: absolute;
-                inset: 0;
-                background: linear-gradient(
-                    135deg,
-                    rgba(255, 47, 109, 0.08),
-                    transparent 50%
-                );
-                pointer-events: none;
-            }
-
-            .card-label {
-                color: #ff2f6d;
-                font-size: 13px;
-                text-transform: uppercase;
-                letter-spacing: 1.2px;
-                margin-bottom: 16px;
-            }
-
-            .card-title {
-                font-size: 26px;
-                font-weight: 700;
-                margin-bottom: 10px;
-            }
-
-            .card-text {
-                color: #cfcfcf;
-                line-height: 1.6;
-                font-size: 15px;
-            }
-
-            .card.big {
-                grid-column: span 2;
-            }
-
-            .status-list {
-                margin-top: 16px;
-                display: flex;
                 flex-direction: column;
-                gap: 12px;
-            }
-
-            .status-item {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                background: #181818;
-                border-radius: 16px;
-                padding: 12px 14px;
-                color: #e8e8e8;
-            }
-
-            .status-tag {
-                padding: 6px 12px;
-                border-radius: 999px;
-                background: rgba(255, 47, 109, 0.14);
-                color: #ff4f84;
-                font-size: 12px;
-                font-weight: 700;
             }
 
             .sidebar {
-                width: 340px;
-                background: #0a0a0a;
-                border-left: 1px solid rgba(255, 255, 255, 0.06);
-                padding: 32px 22px;
-                display: flex;
-                flex-direction: column;
+                width: 100%;
             }
 
-            .sidebar-title {
-                font-size: 20px;
-                font-weight: 800;
-                margin-bottom: 24px;
+            .grid {
+                grid-template-columns: 1fr;
             }
 
-            .locked-menu {
-                display: flex;
-                flex-direction: column;
+            .hero h1 {
+                font-size: 38px;
+            }
+        }
+
+        @media (max-width: 680px) {
+            .page {
+                padding: 14px;
                 gap: 14px;
             }
 
-            .locked-item {
-                position: relative;
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                padding: 18px 18px;
-                border-radius: 20px;
-                background: linear-gradient(180deg, #141414, #101010);
-                border: 1px solid rgba(255, 255, 255, 0.05);
-                color: #8c8c8c;
-                text-decoration: none;
-                cursor: not-allowed;
-                user-select: none;
-                filter: grayscale(0.15);
-                opacity: 0.78;
-                pointer-events: none;
-            }
-
-            .locked-item::after {
-                content: "Заблоковано";
-                position: absolute;
-                right: 54px;
-                top: 50%;
-                transform: translateY(-50%);
-                font-size: 11px;
-                font-weight: 700;
-                color: #ff6b95;
-                background: rgba(255, 47, 109, 0.12);
-                border: 1px solid rgba(255, 47, 109, 0.25);
-                padding: 6px 10px;
-                border-radius: 999px;
-            }
-
-            .locked-left {
-                display: flex;
-                flex-direction: column;
-                gap: 4px;
-            }
-
-            .locked-name {
-                font-size: 17px;
-                color: #d9d9d9;
-                filter: blur(0.3px);
-            }
-
-            .locked-desc {
-                font-size: 13px;
-                color: #7d7d7d;
-            }
-
-            .lock-icon {
-                width: 38px;
-                height: 38px;
-                border-radius: 50%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                background: rgba(255, 47, 109, 0.08);
-                color: #ff2f6d;
-                font-size: 16px;
-                flex-shrink: 0;
-                margin-left: 14px;
-            }
-
-            .premium-note {
-                margin-top: 26px;
-                padding: 18px;
+            .main,
+            .sidebar {
                 border-radius: 22px;
-                background: rgba(255, 47, 109, 0.08);
-                border: 1px solid rgba(255, 47, 109, 0.18);
-                color: #e5e5e5;
-                line-height: 1.6;
-            }
-
-            .premium-note strong {
-                color: #ff2f6d;
-            }
-
-            .mini-box {
-                margin-top: 20px;
                 padding: 18px;
-                border-radius: 20px;
-                background: #111;
-                border: 1px solid rgba(255, 255, 255, 0.05);
             }
 
-            .mini-box-title {
-                font-size: 14px;
-                color: #ff2f6d;
-                text-transform: uppercase;
-                margin-bottom: 10px;
-                letter-spacing: 1px;
+            .hero {
+                padding: 20px;
             }
 
-            .mini-box p {
-                margin: 0;
-                color: #bfbfbf;
-                line-height: 1.6;
-                font-size: 14px;
+            .hero h1 {
+                font-size: 30px;
             }
 
-            .copy-field {
-                margin-bottom: 16px;
-            }
-
-            .copy-label {
-                font-size: 12px;
-                color: #ff2f6d;
-                margin-bottom: 6px;
-                text-transform: uppercase;
-                letter-spacing: 1px;
+            .card {
+                padding: 18px;
             }
 
             .copy-input {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                background: #181818;
-                padding: 12px 14px;
-                border-radius: 12px;
-                border: 1px solid rgba(255, 255, 255, 0.05);
+                flex-direction: column;
+                align-items: stretch;
             }
 
-            .copy-input span {
-                color: #fff;
-                font-size: 14px;
-                user-select: all;
+            .copy-btn {
+                width: 100%;
             }
+        }
+    </style>
+</head>
+<body>
 
-            .copy-input button {
-                background: rgba(255, 47, 109, 0.1);
-                border: none;
-                border-radius: 8px;
-                padding: 6px 10px;
-                cursor: pointer;
-                color: #ff2f6d;
-                transition: 0.2s;
-            }
-
-            .copy-input button:hover {
-                background: rgba(255, 47, 109, 0.2);
-            }
-
-            .copy-note {
-                margin-top: 10px;
-                font-size: 12px;
-                color: #888;
-            }
-
-            @media (max-width: 1100px) {
-                .page {
-                    flex-direction: column;
-                }
-
-                .sidebar {
-                    width: 100%;
-                    border-left: none;
-                    border-top: 1px solid rgba(255, 255, 255, 0.06);
-                }
-
-                .crm-grid {
-                    grid-template-columns: 1fr;
-                }
-
-                .card.big {
-                    grid-column: span 1;
-                }
-
-                .welcome-box h1 {
-                    font-size: 36px;
-                }
-            }
-        </style>
-    </head>
-    <body>
-        <div class="page">
-            <div class="main-content">
-                <div class="topbar">
-                    <div class="brand">
-                        <img src="{% static 'images/logo.svg' %}" alt="Logo" />
-                        <div class="brand-title">CRM panel</div>
-                    </div>
+<div class="page">
+    <main class="main glass">
+        <div class="topbar">
+            <div class="brand">
+                <img src="{% static 'images/logo.svg' %}" alt="Logo">
+                <div class="brand-meta">
+                    <div class="brand-label">Private CRM System</div>
+                    <div class="brand-title">NML Control Panel</div>
                 </div>
+            </div>
 
-                <div class="welcome-box">
-                    <h1>Ласкаво просимо в <span>CRM-систему</span></h1>
-                    <p>
-                        Ви успішно увійшли в систему. Тут буде ваша внутрішня
-                        панель керування, клієнти, задачі, оновлення та
-                        дедлайни. Частина функцій зараз недоступна і буде
-                        активована пізніше.
-                    </p>
-                </div>
-
-                <div class="crm-grid">
-                    <div class="card big">
-                        <div class="card-label">Огляд системи</div>
-                        <div class="card-title">
-                            Робочий простір користувача
-                        </div>
-                        <div class="card-text">
-                            Це стартова сторінка CRM. Тут можна розміщувати
-                            коротку аналітику, активність користувача, статуси
-                            проєктів, останні оновлення та основні показники.
-                        </div>
-
-                        <div class="status-list">
-                            <div class="status-item">
-                                <span>Доступ до кабінету</span>
-                                <span class="status-tag">Активний</span>
-                            </div>
-                            <div class="status-item">
-                                <span>Панель CRM</span>
-                                <span class="status-tag">Демо режим</span>
-                            </div>
-                            <div class="status-item">
-                                <span>Розширені модулі</span>
-                                <span class="status-tag">Locked</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card">
-    <div class="card-label">Аккаунт</div>
-    <div class="card-title">Дані доступу</div>
-
-    {% if profile %}
-        <div class="copy-field">
-            <div class="copy-label">Корпоративна пошта</div>
-            <div class="copy-input">
-                <span id="email">{{ profile.corporate_email }}</span>
-                <button type="button" onclick="copyText('email')">📋</button>
+            <div class="user-chip">
+                {{ request.user.username }}
             </div>
         </div>
 
-        <div class="copy-field">
-            <div class="copy-label">Пароль</div>
-            <div class="copy-input">
-                <span id="password">{{ profile.crm_password }}</span>
-                <button type="button" onclick="copyText('password')">📋</button>
+        <section class="hero">
+            <div class="hero-label">Secure Workspace</div>
+            <h1>Ласкаво просимо в <span>CRM</span></h1>
+            <p>
+                Ви успішно авторизувалися. Це захищений робочий простір із обмеженим доступом.
+                Частина модулів уже відображається в системі, але наразі заблокована для користувача.
+            </p>
+        </section>
+
+        <section class="grid">
+            <div class="card">
+                <div class="card-label">Система</div>
+                <div class="card-title">Робочий простір</div>
+                <div class="card-text">
+                    Тут пізніше можна розмістити реальні блоки CRM: аналітику, активність,
+                    коментарі, заявки, менеджерів, таблиці, статуси та нотатки.
+                </div>
+
+                <div class="status-list">
+                    <div class="status-item">
+                        <span>Доступ до системи</span>
+                        <span class="status-tag">Активний</span>
+                    </div>
+                    <div class="status-item">
+                        <span>CRM панель</span>
+                        <span class="status-tag">Online</span>
+                    </div>
+                    <div class="status-item">
+                        <span>Розширені модулі</span>
+                        <span class="status-tag">Locked</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-label">Аккаунт</div>
+                <div class="card-title">Дані доступу</div>
+
+                {% if profile %}
+                    <div class="copy-wrap">
+                        <div class="copy-field">
+                            <div class="copy-label">Корпоративна пошта</div>
+                            <div class="copy-input">
+                                <div class="copy-value" id="email">{{ profile.corporate_email }}</div>
+                                <button class="copy-btn" type="button" onclick="copyText('email')">📋</button>
+                            </div>
+                        </div>
+
+                        <div class="copy-field">
+                            <div class="copy-label">Пароль</div>
+                            <div class="copy-input">
+                                <div class="copy-value" id="password">{{ profile.crm_password }}</div>
+                                <button class="copy-btn" type="button" onclick="copyText('password')">📋</button>
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="card-text">
+                        Дані ще не призначені адміністратором.
+                    </div>
+                {% endif %}
+
+                <div class="copy-note">
+                    Поля недоступні для редагування користувачем. Дані може змінювати лише адміністратор.
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <aside class="sidebar glass">
+        <div class="sidebar-title">Модулі CRM</div>
+        <div class="sidebar-subtitle">
+            Доступні візуально, але наразі заблоковані для цього профілю.
+        </div>
+
+        <div class="locked-menu">
+            <div class="locked-item">
+                <div class="locked-left">
+                    <div class="locked-name">Графік</div>
+                    <div class="locked-desc">Календар подій та зустрічей</div>
+                </div>
+                <div class="locked-meta">
+                    <div class="locked-badge">Locked</div>
+                    <div class="lock-icon">🔒</div>
+                </div>
+            </div>
+
+            <div class="locked-item">
+                <div class="locked-left">
+                    <div class="locked-name">Задачі</div>
+                    <div class="locked-desc">Список задач і контроль виконання</div>
+                </div>
+                <div class="locked-meta">
+                    <div class="locked-badge">Locked</div>
+                    <div class="lock-icon">🔒</div>
+                </div>
+            </div>
+
+            <div class="locked-item">
+                <div class="locked-left">
+                    <div class="locked-name">Клієнт</div>
+                    <div class="locked-desc">Профіль клієнта та історія роботи</div>
+                </div>
+                <div class="locked-meta">
+                    <div class="locked-badge">Locked</div>
+                    <div class="lock-icon">🔒</div>
+                </div>
+            </div>
+
+            <div class="locked-item">
+                <div class="locked-left">
+                    <div class="locked-name">Update</div>
+                    <div class="locked-desc">Оновлення і зміни в системі</div>
+                </div>
+                <div class="locked-meta">
+                    <div class="locked-badge">Locked</div>
+                    <div class="lock-icon">🔒</div>
+                </div>
+            </div>
+
+            <div class="locked-item">
+                <div class="locked-left">
+                    <div class="locked-name">Deadline</div>
+                    <div class="locked-desc">Контроль термінів виконання</div>
+                </div>
+                <div class="locked-meta">
+                    <div class="locked-badge">Locked</div>
+                    <div class="lock-icon">🔒</div>
+                </div>
+            </div>
+
+            <div class="locked-item">
+                <div class="locked-left">
+                    <div class="locked-name">Analytics</div>
+                    <div class="locked-desc">Звіти, метрики та аналітика</div>
+                </div>
+                <div class="locked-meta">
+                    <div class="locked-badge">Locked</div>
+                    <div class="lock-icon">🔒</div>
+                </div>
+            </div>
+
+            <div class="locked-item">
+                <div class="locked-left">
+                    <div class="locked-name">Messages</div>
+                    <div class="locked-desc">Внутрішні повідомлення та комунікація</div>
+                </div>
+                <div class="locked-meta">
+                    <div class="locked-badge">Locked</div>
+                    <div class="lock-icon">🔒</div>
+                </div>
             </div>
         </div>
-    {% else %}
-        <div class="card-text">
-            Дані ще не призначені адміністратором.
-        </div>
-    {% endif %}
 
-    <div class="copy-note">
-        Дані доступу надані системою. Редагування недоступне.
-    </div>
+        <div class="premium-box">
+            <strong>Примітка:</strong> цей обліковий запис має доступ лише до базового кабінету.
+            Розширені інструменти CRM будуть доступні після активації адміністратором.
+        </div>
+    </aside>
 </div>
 
-                    <div class="card">
-                        <div class="card-label">Статус</div>
-                        <div class="card-title">CRM скоро відкриється</div>
-                        <div class="card-text">
-                            Базова оболонка вже працює. Наступним кроком можна
-                            додати реальних клієнтів, таблиці, нотатки, задачі
-                            та автоматизацію.
-                        </div>
-                    </div>
+<script>
+    function copyText(id) {
+        const text = document.getElementById(id).innerText;
+        navigator.clipboard.writeText(text).then(() => {
+            alert('Скопійовано');
+        });
+    }
+</script>
 
-                    <div class="card">
-                        <div class="card-label">Безпека</div>
-                        <div class="card-title">Захищений вхід</div>
-                        <div class="card-text">
-                            Сторінка доступна лише після авторизації.
-                            Незареєстрований користувач не побачить цей розділ
-                            без логіна та пароля.
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <aside class="sidebar">
-                <div class="sidebar-title">Модулі CRM</div>
-
-                <div class="locked-menu">
-                    <a href="#" class="locked-item">
-                        <div class="locked-left">
-                            <div class="locked-name">Графік</div>
-                            <div class="locked-desc">
-                                Календар подій і зустрічей
-                            </div>
-                        </div>
-                        <div class="lock-icon">🔒</div>
-                    </a>
-
-                    <a href="#" class="locked-item">
-                        <div class="locked-left">
-                            <div class="locked-name">Задачі</div>
-                            <div class="locked-desc">
-                                Контроль командних задач
-                            </div>
-                        </div>
-                        <div class="lock-icon">🔒</div>
-                    </a>
-
-                    <a href="#" class="locked-item">
-                        <div class="locked-left">
-                            <div class="locked-name">Клієнт</div>
-                            <div class="locked-desc">
-                                База клієнтів та лідів
-                            </div>
-                        </div>
-                        <div class="lock-icon">🔒</div>
-                    </a>
-
-                    <a href="#" class="locked-item">
-                        <div class="locked-left">
-                            <div class="locked-name">Update</div>
-                            <div class="locked-desc">Оновлення системи</div>
-                        </div>
-                        <div class="lock-icon">🔒</div>
-                    </a>
-
-                    <a href="#" class="locked-item">
-                        <div class="locked-left">
-                            <div class="locked-name">Deadline</div>
-                            <div class="locked-desc">
-                                Контроль термінів виконання
-                            </div>
-                        </div>
-                        <div class="lock-icon">🔒</div>
-                    </a>
-
-                    <a href="#" class="locked-item">
-                        <div class="locked-left">
-                            <div class="locked-name">Analytics</div>
-                            <div class="locked-desc">Статистика та звіти</div>
-                        </div>
-                        <div class="lock-icon">🔒</div>
-                    </a>
-
-                    <a href="#" class="locked-item">
-                        <div class="locked-left">
-                            <div class="locked-name">Messages</div>
-                            <div class="locked-desc">
-                                Внутрішні повідомлення
-                            </div>
-                        </div>
-                        <div class="lock-icon">🔒</div>
-                    </a>
-                </div>
-
-                <div class="premium-note">
-                    <strong>Увага:</strong> частина модулів тимчасово
-                    недоступна. Вони відображаються як заблоковані функції і
-                    будуть підключені пізніше.
-                </div>
-
-                <div class="mini-box">
-                    <div class="mini-box-title">Доступ</div>
-                    <p>
-                        Поточний режим: користувацький кабінет. Розширені
-                        можливості CRM ще не активовані для цього профілю.
-                    </p>
-                </div>
-            </aside>
-        </div>
-        <script>
-            function copyText(id) {
-                const text = document.getElementById(id).innerText;
-                navigator.clipboard.writeText(text);
-
-                alert("Скопійовано ✅");
-            }
-        </script>
-    </body>
+</body>
 </html>
