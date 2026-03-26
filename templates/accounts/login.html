@@ -1,0 +1,101 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #000;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-box {
+            background: #111;
+            padding: 40px;
+            border-radius: 20px;
+            width: 350px;
+            box-shadow: 0 0 40px rgba(255, 0, 100, 0.2);
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #ff2f6d;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            border: none;
+            background: #222;
+            color: #fff;
+        }
+
+        input:focus {
+            outline: none;
+            border: 1px solid #ff2f6d;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            border-radius: 999px;
+            border: none;
+            background: #ff2f6d;
+            color: #000;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            opacity: 0.85;
+        }
+
+        .error {
+            color: #ff4d6d;
+            margin-bottom: 10px;
+        }
+        .logo {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.logo img {
+    width: 120px;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 0 10px rgba(255, 47, 109, 0.5));
+}
+    </style>
+</head>
+<body>
+
+<div class="login-box">
+    <div class="logo">
+    <img src="{% static 'images/logo.svg' %}" alt="Logo">
+</div>
+
+    {% if error %}
+        <div class="error">{{ error }}</div>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="username" placeholder="Логін" required>
+        <input type="password" name="password" placeholder="Пароль" required>
+        <button type="submit">Увійти</button>
+    </form>
+</div>
+
+</body>
+</html>

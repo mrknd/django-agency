@@ -347,3 +347,5 @@ document.addEventListener('DOMContentLoaded', function () {
     window.addEventListener('scroll', setActiveLink);
     setActiveLink();
 });
+// ------------------------------------ Clients
+

@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
+
 
 {% block title %}Главная | NML Digital{% endblock %}
 
@@ -68,7 +70,7 @@
                         <div class="about-stat">
                             <div class="about-stat__number">100+</div>
 
-                            <div class="about-stat__title">профессионалов</div>
+                            <div class="about-stat__title">{% trans "профессионалов" %}</div>
 
                             <div class="about-stat__line"></div>
 
@@ -384,7 +386,6 @@
                 </div>
 </section>
 
-{% include 'sections/cases.html' %}
 
 <section class="section__faq">
   <div class="container__faq">
