@@ -290,6 +290,101 @@
                 </div>
 </section>
 
+<section class="orbitflow__section">
+    <div class="orbitflow__container">
+        <div class="orbitflow__header">
+            <p class="orbitflow__label">Какие задачи мы выполняем?</p>
+            <h2 class="orbitflow__title">Как устроены наши <span class="results-section__title-circle">процессы</span>?</h2>
+        </div>
+
+        <div class="orbitflow__layout">
+            <div class="orbitflow__left">
+                <div class="orbitflow__pin-area">
+                    <div class="orbitflow__circle-wrap">
+                        <svg class="orbitflow__circle" viewBox="0 0 320 320">
+                            <circle class="orbitflow__circle-bg" cx="160" cy="160" r="124"></circle>
+                            <circle class="orbitflow__circle-progress" cx="160" cy="160" r="124"></circle>
+                        </svg>
+
+                        <div class="orbitflow__circle-content">
+                            <div class="orbitflow__circle-label">Шаг</div>
+                            <div class="orbitflow__circle-count">
+                                <span id="orbitflowStep">0</span>/8
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="orbitflow__right">
+                <article class="orbitflow__card">
+                    <img src="{% static 'images/icons/step1.svg' %}" class="orbitflow__icon"></img>
+                    <h3 class="orbitflow__card-title">Анализ рынка и конкурентов</h3>
+                    <p class="orbitflow__card-text">
+                      Углубленный нишевой анализ конкурентов — сильные и слабые стороны, используемые форматы рекламы, качество объявлений и креативов, продвигаемые страницы и ключевые запросы.
+                    </p>
+                </article>
+
+                <article class="orbitflow__card">
+                    <img src="{% static 'images/icons/step2.svg' %}" class="orbitflow__icon"></img>
+                    <h3 class="orbitflow__card-title">Стратегия рекламы</h3>
+                    <p class="orbitflow__card-text">
+                        Выбираем форматы рекламы в зависимости от типа сайта и ниши: Google Ads, товарная реклама, баннерно-медийная реклама, YouTube Ads или Performance Max.
+                    </p>
+                </article>
+
+                <article class="orbitflow__card">
+                    <img src="{% static 'images/icons/step3.svg' %}" class="orbitflow__icon"></img>
+                    <h3 class="orbitflow__card-title">Рекламный кабинет</h3>
+                    <p class="orbitflow__card-text">
+                        Создание или аудит и оптимизация существующего рекламного кабинета. Настройка кабинета в соответствии с выбранной рекламной стратегией.
+                    </p>
+                </article>
+
+                <article class="orbitflow__card">
+                    <img src="{% static 'images/icons/step4.svg' %}" class="orbitflow__icon"></img>
+                    <h3 class="orbitflow__card-title">Ключевые запросы</h3>
+                    <p class="orbitflow__card-text">
+                        Собираем ключевые запросы, формируем список страниц для продвижения, анализируем юзабилити страниц и даем рекомендации по изменениях.
+                    </p>
+                </article>
+
+                <article class="orbitflow__card">
+                    <img src="{% static 'images/icons/step5.svg' %}" class="orbitflow__icon"></img>
+                    <h3 class="orbitflow__card-title">Настройка аналитики</h3>
+                    <p class="orbitflow__card-text">
+                        Создаем или оптимизируем Google Analytics и Google Tag Manager. Настраиваем цели, события и отслеживание поведения посетителей.
+                    </p>
+                </article>
+
+                <article class="orbitflow__card">
+                    <img src="{% static 'images/icons/step6.svg' %}" class="orbitflow__icon"></img>
+                    <h3 class="orbitflow__card-title">Запуск рекламной кампании</h3>
+                    <p class="orbitflow__card-text">
+                        Запускаем рекламные кампании после согласования стратегии, настроек и всех подготовительных этапов.
+                    </p>
+                </article>
+
+                <article class="orbitflow__card">
+                    <img src="{% static 'images/icons/step7.svg' %}" class="orbitflow__icon"></img>
+                    <h3 class="orbitflow__card-title">Оптимизация</h3>
+                    <p class="orbitflow__card-text">
+                        Анализируем результаты, улучшаем объявления, корректируем ставки, аудитории и посадочные страницы.
+                    </p>
+                </article>
+
+                <article class="orbitflow__card">
+                    <img src="{% static 'images/icons/step8.svg' %}" class="orbitflow__icon"></img>
+                    <h3 class="orbitflow__card-title">Масштабирование</h3>
+                    <p class="orbitflow__card-text">
+                        После получения стабильных результатов масштабируем кампании, расширяем семантику, аудитории и каналы привлечения.
+                    </p>
+                </article>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section class="why-us">
                 <div class="container">
                     <div class="why-us__top">
@@ -393,7 +488,7 @@
       
       <div class="faq-left__faq">
         <div class="faq-label__faq">FAQ</div>
-        <h2 class="faq-title__faq">Вам будет интересно узнать</h2>
+        <h2 class="faq-title__faq">Вам будет <span class="why-us__title-mark">интересно</span> узнать</h2>
 
         <div class="faq-arrow-wrap__faq">
           <svg class="faq-arrow__faq" width="240" height="180" viewBox="0 0 240 180" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -584,7 +679,7 @@
                                         type="text"
                                         id="name"
                                         name="name"
-                                        placeholder="Введіть ім’я"
+                                        placeholder="Сергей Иванов"
                                     />
                                 </div>
 
@@ -599,7 +694,7 @@
                                         type="email"
                                         id="email"
                                         name="email"
-                                        placeholder="Ваш email"
+                                        placeholder="mail@example.com"
                                     />
                                 </div>
 
@@ -614,7 +709,7 @@
                                         type="text"
                                         id="website"
                                         name="website"
-                                        placeholder="Посилання на сайт"
+                                        placeholder="https://your-website.com"
                                     />
                                 </div>
 
@@ -629,4 +724,6 @@
                     </div>
                 </div>
 </section>
+
+
 {% endblock %}

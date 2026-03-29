@@ -316,36 +316,126 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 // -------------------------------------- BLOG Zmist
-document.addEventListener('DOMContentLoaded', function () {
-    const links = document.querySelectorAll('.blog-toc__link');
-    const sections = Array.from(links)
-        .map(link => document.querySelector(link.getAttribute('href')))
-        .filter(Boolean);
+document.addEventListener("DOMContentLoaded", function () {
+    const section = document.querySelector(".orbitflow__section");
+    const left = document.querySelector(".orbitflow__left");
+    const right = document.querySelector(".orbitflow__right");
+    const pinArea = document.querySelector(".orbitflow__pin-area");
+    const circleWrap = document.querySelector(".orbitflow__circle-wrap");
+    const progressCircle = document.querySelector(".orbitflow__circle-progress");
+    const currentStep = document.getElementById("orbitflowStep");
+    const cards = document.querySelectorAll(".orbitflow__card");
 
-    function setActiveLink() {
-        let currentSection = null;
+    if (!section || !left || !right || !pinArea || !circleWrap || !progressCircle || !currentStep || !cards.length) {
+        return;
+    }
 
-        sections.forEach(section => {
-            const rect = section.getBoundingClientRect();
-            if (rect.top <= 140) {
-                currentSection = section;
-            }
+    const totalSteps = cards.length;
+    const radius = 124;
+    const circumference = 2 * Math.PI * radius;
+
+    progressCircle.style.strokeDasharray = circumference;
+    progressCircle.style.strokeDashoffset = circumference;
+
+    const revealObserver = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("orbitflow__is-visible");
+                }
+            });
+        },
+        { threshold: 0.15 }
+    );
+
+    cards.forEach((card) => revealObserver.observe(card));
+
+    function setOrbitflowMetrics() {
+        if (window.innerWidth <= 991) {
+            pinArea.style.minHeight = "auto";
+            section.style.setProperty("--orbitflow-fixed-left", "200px");
+            circleWrap.classList.remove("orbitflow__is-fixed", "orbitflow__is-bottom");
+            return;
+        }
+
+        pinArea.style.minHeight = `${right.offsetHeight}px`;
+
+        const leftRect = left.getBoundingClientRect();
+        const centerX = leftRect.left + window.scrollX + (leftRect.width / 2);
+
+        section.style.setProperty("--orbitflow-fixed-left", `${centerX}px`);
+    }
+
+    function updateOrbitflow() {
+        if (window.innerWidth <= 991) {
+            return;
+        }
+
+        const sectionRect = section.getBoundingClientRect();
+        const pinRect = pinArea.getBoundingClientRect();
+        const circleHeight = circleWrap.offsetHeight;
+        const viewportCenter = window.innerHeight / 2;
+
+        circleWrap.classList.remove("orbitflow__is-fixed", "orbitflow__is-bottom");
+
+        const startPin = pinRect.top <= viewportCenter - (circleHeight / 2);
+        const endPin = pinRect.bottom <= viewportCenter + (circleHeight / 2);
+
+        if (!startPin) {
+            // лишається зверху
+        } else if (endPin) {
+            circleWrap.classList.add("orbitflow__is-bottom");
+        } else {
+            circleWrap.classList.add("orbitflow__is-fixed");
+        }
+
+        const scrollableDistance = Math.max(section.offsetHeight - window.innerHeight, 1);
+        const passed = Math.max(0, -sectionRect.top);
+        let progress = passed / scrollableDistance;
+
+        progress = Math.max(0, Math.min(progress, 1));
+
+        progressCircle.style.strokeDashoffset = circumference - (progress * circumference);
+
+        let activeStep = Math.round(progress * totalSteps);
+
+        if (sectionRect.top > 0) {
+            activeStep = 0;
+        }
+
+        if (sectionRect.bottom <= window.innerHeight) {
+            activeStep = totalSteps;
+        }
+
+        activeStep = Math.max(0, Math.min(activeStep, totalSteps));
+        currentStep.textContent = activeStep;
+
+        cards.forEach((card, index) => {
+            card.classList.toggle("orbitflow__is-active", index === activeStep - 1);
         });
+    }
 
-        links.forEach(link => link.classList.remove('active'));
+    function handleAll() {
+        setOrbitflowMetrics();
+        updateOrbitflow();
+    }
 
-        if (currentSection) {
-            const activeLink = document.querySelector(
-                `.blog-toc__link[href="#${currentSection.id}"]`
-            );
-            if (activeLink) {
-                activeLink.classList.add('active');
-            }
+    handleAll();
+
+    let ticking = false;
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(() => {
+                updateOrbitflow();
+                ticking = false;
+            });
+            ticking = true;
         }
     }
 
-    window.addEventListener('scroll', setActiveLink);
-    setActiveLink();
+    window.addEventListener("scroll", requestTick, { passive: true });
+    window.addEventListener("resize", handleAll);
 });
-// ------------------------------------ Clients
+
 

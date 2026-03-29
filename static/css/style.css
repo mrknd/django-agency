@@ -5182,6 +5182,7 @@ body.modal-open {
     }
 }
 /* ------------------------------------------------------- */
+
 .blog-detail-page {
     padding: 60px 0 100px;
     background: #050505;
@@ -5654,4 +5655,247 @@ body.modal-open {
     }
 }
 /* ------------------------------------------------- */
+/* ---------- Animation ---------- */
+/* ------------------------------------------------- */
 
+.orbitflow__section {
+    --orbitflow-fixed-left: 200px;
+    padding: 120px 0;
+    color: #f3ede4;
+}
+
+.orbitflow__container {
+    width: min(1400px, calc(100% - 40px));
+    margin: 0 auto;
+}
+
+.orbitflow__header {
+    margin-bottom: 56px;
+    max-width: 860px;
+}
+
+.orbitflow__label {
+    margin: 0 0 14px;
+    font-size: 16px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #ff3b7f;
+}
+
+.orbitflow__title {
+    margin: 0;
+    font-size: clamp(40px, 5vw, 50px);
+    line-height: 0.98;
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    color: #f1f1f1;
+    font-family: Unbounded, sans-serif;
+}
+
+.orbitflow__layout {
+    display: grid;
+    grid-template-columns: 480px minmax(0, 1fr);
+    gap: 72px;
+    align-items: start;
+}
+
+.orbitflow__left {
+    position: relative;
+}
+
+.orbitflow__pin-area {
+    position: relative;
+    min-height: 1000px;
+}
+
+.orbitflow__circle-wrap {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 360px;
+    height: 360px;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    will-change: transform;
+}
+
+.orbitflow__circle-wrap.orbitflow__is-fixed {
+    position: fixed;
+    top: 50%;
+    left: var(--orbitflow-fixed-left);
+    transform: translate(-50%, -50%);
+    z-index: 10;
+}
+
+.orbitflow__circle-wrap.orbitflow__is-bottom {
+    position: absolute;
+    top: auto;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.orbitflow__circle {
+    width: 360px;
+    height: 360px;
+    transform: rotate(-90deg);
+    overflow: visible;
+    filter: drop-shadow(0 0 22px rgba(255, 59, 127, 0.08));
+}
+
+.orbitflow__circle-bg {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.1);
+    stroke-width: 4;
+}
+
+.orbitflow__circle-progress {
+    fill: none;
+    stroke: #ff3b7f;
+    stroke-width: 4;
+    stroke-linecap: round;
+    stroke-dasharray: 779;
+    stroke-dashoffset: 779;
+    transition: stroke-dashoffset 0.12s linear;
+}
+
+.orbitflow__circle-content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    font-weight: 500;
+}
+
+.orbitflow__circle-label {
+    margin-bottom: 12px;
+    font-size: 24px;
+    line-height: 1;
+    font-weight: 500;
+    color: rgba(243, 237, 228, 0.92);
+}
+
+.orbitflow__circle-count {
+    font-size: 64px;
+    line-height: 1;
+    font-weight: 500;
+    letter-spacing: -0.04em;
+    color: #f1f1f1;
+    font-family: Unbounded, sans-serif;
+}
+
+.orbitflow__right {
+    border-left: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.orbitflow__card {
+    min-height: 270px;
+    padding: 42px 0 42px 46px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    opacity: 0.45;
+    transform: translateY(24px);
+    transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+.orbitflow__card.orbitflow__is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.orbitflow__card.orbitflow__is-active {
+    opacity: 1;
+}
+
+.orbitflow__icon {
+    margin-bottom: 22px;
+    font-size: 42px;
+    line-height: 1;
+}
+
+.orbitflow__card-title {
+    margin: 0 0 16px;
+    font-size: 22px;
+    line-height: 1.04;
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    color: #f3ede4;
+    max-width: 760px;
+    font-family: Unbounded, sans-serif;
+}
+
+.orbitflow__card-text {
+    margin: 0;
+    max-width: 780px;
+    font-size: 16px;
+    line-height: 1.45;
+    color: #b0b0b0;
+}
+
+@media (max-width: 1199px) {
+    .orbitflow__layout {
+        grid-template-columns: 320px minmax(0, 1fr);
+        gap: 32px;
+    }
+
+    .orbitflow__circle-wrap,
+    .orbitflow__circle {
+        width: 260px;
+        height: 260px;
+    }
+
+    .orbitflow__circle-count {
+        font-size: 48px;
+    }
+
+    .orbitflow__card-text {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 991px) {
+    .orbitflow__layout {
+        grid-template-columns: 1fr;
+    }
+
+    .orbitflow__left {
+        display: none;
+    }
+
+    .orbitflow__right {
+        border-left: none;
+    }
+
+    .orbitflow__card {
+        min-height: auto;
+        padding: 34px 0;
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@media (max-width: 767px) {
+    .orbitflow__section {
+        padding: 72px 0;
+    }
+
+    .orbitflow__label {
+        font-size: 18px;
+    }
+
+    .orbitflow__title {
+        font-size: 38px;
+    }
+
+    .orbitflow__card-title {
+        font-size: 24px;
+    }
+
+    .orbitflow__card-text {
+        font-size: 18px;
+    }
+}
