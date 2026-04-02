@@ -439,3 +439,65 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// -------------- New Slider for Clients ---------------
+
+document.addEventListener('DOMContentLoaded', () => {
+    const sliders = document.querySelectorAll('.clients__slider');
+
+    sliders.forEach(slider => {
+        const track = slider.querySelector('.clients__track');
+        if (!track) return;
+
+        const speed = parseFloat(slider.dataset.speed) || 0.8;
+        const isReverse = slider.classList.contains('reverse');
+
+        // Дублюємо логотипи для безшовної петлі
+        const logos = Array.from(track.children);
+        logos.forEach(logo => {
+            const clone = logo.cloneNode(true);
+            track.appendChild(clone);
+        });
+
+        let position = 0;
+        let isPaused = false;
+
+        function animate() {
+            if (!isPaused) {
+                position += isReverse ? speed : -speed;
+                track.style.transform = `translateX(${position}px)`;
+
+                // Безшовний цикл
+                if (Math.abs(position) >= track.scrollWidth / 2) {
+                    position = 0;
+                }
+            }
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+
+        // Пауза при наведенні
+        slider.addEventListener('mouseenter', () => isPaused = true);
+        slider.addEventListener('mouseleave', () => isPaused = false);
+
+        // Пауза на мобільних при торканні
+        slider.addEventListener('touchstart', () => isPaused = true);
+        slider.addEventListener('touchend', () => isPaused = false);
+    });
+});
