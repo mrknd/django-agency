@@ -1,0 +1,167 @@
+<style>
+    .stats-section {
+  padding: 40px 20px;
+  background: #000;
+}
+
+.stats-wrap {
+  max-width: 1680px;
+  margin: 0 auto;
+  padding: 42px 40px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+  border-radius: 28px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,45,122,0.04));
+  border: 1px solid rgba(255,255,255,0.06);
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.02) inset;
+  overflow: hidden;
+  position: relative;
+}
+
+.stats-wrap::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 15% 50%, rgba(255, 45, 122, 0.12), transparent 30%),
+    radial-gradient(circle at 85% 50%, rgba(255, 45, 122, 0.08), transparent 25%);
+  pointer-events: none;
+}
+
+.stat-item {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  opacity: 0;
+  transform: translateY(35px);
+  transition: transform 0.8s ease, opacity 0.8s ease;
+}
+
+.stat-item.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stat-number {
+  min-width: fit-content;
+  font-size: clamp(52px, 6vw, 78px);
+  line-height: 0.95;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: #ff2d7a;
+  text-shadow: 0 0 18px rgba(255, 45, 122, 0.18);
+}
+
+.stat-text {
+  font-size: clamp(20px, 1.7vw, 24px);
+  line-height: 1.15;
+  font-weight: 500;
+  color: #d9d9d9;
+  max-width: 220px;
+}
+
+@media (max-width: 1200px) {
+  .stats-wrap {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .stats-section {
+    padding: 24px 16px;
+  }
+
+  .stats-wrap {
+    grid-template-columns: 1fr;
+    padding: 28px 22px;
+    gap: 22px;
+    border-radius: 22px;
+  }
+
+  .stat-item {
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .stat-text {
+    font-size: 18px;
+  }
+}
+
+
+</style>
+
+<section class="stats-section">
+  <div class="stats-wrap">
+    <div class="stat-item">
+      <div class="stat-number" data-target="200">0+</div>
+      <div class="stat-text">Задоволених<br>клієнтів</div>
+    </div>
+
+    <div class="stat-item">
+      <div class="stat-number" data-target="7">0+</div>
+      <div class="stat-text">Років досвіду у<br>маркетингу</div>
+    </div>
+
+    <div class="stat-item">
+      <div class="stat-number" data-target="450">0+</div>
+      <div class="stat-text">Виконаних<br>проєктів</div>
+    </div>
+
+    <div class="stat-item">
+      <div class="stat-number" data-target="110">0+</div>
+      <div class="stat-text">Співробітників<br>у компанії</div>
+    </div>
+  </div>
+</section>
+<script>
+  const statItems = document.querySelectorAll('.stat-item');
+  const statNumbers = document.querySelectorAll('.stat-number');
+
+  const animateCount = (el, target) => {
+    let start = 0;
+    const duration = 1800;
+    const startTime = performance.now();
+
+    const updateCount = (currentTime) => {
+      const progress = Math.min((currentTime - startTime) / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 3);
+      const value = Math.floor(ease * target);
+
+      el.textContent = value + '+';
+
+      if (progress < 1) {
+        requestAnimationFrame(updateCount);
+      } else {
+        el.textContent = target + '+';
+      }
+    };
+
+    requestAnimationFrame(updateCount);
+  };
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach((entry, index) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('show');
+        }, index * 120);
+
+        const numberEl = entry.target.querySelector('.stat-number');
+        const target = +numberEl.dataset.target;
+
+        if (!numberEl.classList.contains('counted')) {
+          numberEl.classList.add('counted');
+          animateCount(numberEl, target);
+        }
+
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.35 });
+
+  statItems.forEach(item => observer.observe(item));
+</script>

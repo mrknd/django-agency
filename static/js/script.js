@@ -1,319 +1,321 @@
 document.addEventListener("DOMContentLoaded", () => {
-  /* =========================
+    /* =========================
      BURGER MENU
   ========================= */
-  const burger = document.getElementById("burger");
-  const nav = document.getElementById("nav");
+    const burger = document.getElementById("burger");
+    const nav = document.getElementById("nav");
 
-  if (burger && nav) {
-    burger.addEventListener("click", () => {
-      burger.classList.toggle("active");
-      nav.classList.toggle("active");
-      document.body.classList.toggle("menu-open");
-    });
-
-    const navLinks = nav.querySelectorAll(".nav__link");
-
-    navLinks.forEach((link) => {
-      link.addEventListener("click", () => {
-        burger.classList.remove("active");
-        nav.classList.remove("active");
-        document.body.classList.remove("menu-open");
-      });
-    });
-  }
-
-  /* =========================
-     SERVICES CAROUSEL
-  ========================= */
-  const servicesTrack = document.getElementById("servicesTrack");
-  const servicesDots = document.getElementById("servicesDots");
-  const prevBtn = document.querySelector(".services-carousel__nav--prev");
-  const nextBtn = document.querySelector(".services-carousel__nav--next");
-  const viewport = document.querySelector(".services-carousel__viewport");
-
-  if (servicesTrack && servicesDots && viewport) {
-    const slides = Array.from(servicesTrack.children);
-    let currentIndex = 0;
-
-    function isMobile() {
-      return window.innerWidth <= 768;
-    }
-
-    function getSlidesPerView() {
-      if (window.innerWidth <= 768) return 1;
-      if (window.innerWidth <= 1200) return 2;
-      return 3;
-    }
-
-    function getGap() {
-      if (window.innerWidth <= 768) return 16;
-      return 28;
-    }
-
-    function getMaxIndex() {
-      return Math.max(0, slides.length - getSlidesPerView());
-    }
-
-    function createDots() {
-      servicesDots.innerHTML = "";
-      const dotsCount = getMaxIndex() + 1;
-
-      for (let i = 0; i < dotsCount; i++) {
-        const dot = document.createElement("button");
-        dot.className = "services-carousel__dot";
-        dot.type = "button";
-        dot.setAttribute("aria-label", `Перейти к слайду ${i + 1}`);
-
-        dot.addEventListener("click", () => {
-          currentIndex = i;
-
-          if (isMobile()) {
-            const slideWidth = slides[0].offsetWidth + getGap();
-            viewport.scrollTo({
-              left: currentIndex * slideWidth,
-              behavior: "smooth",
-            });
-          } else {
-            updateSlider();
-          }
+    if (burger && nav) {
+        burger.addEventListener("click", () => {
+            burger.classList.toggle("active");
+            nav.classList.toggle("active");
+            document.body.classList.toggle("menu-open");
         });
 
-        servicesDots.appendChild(dot);
-      }
+        const navLinks = nav.querySelectorAll(".nav__link");
+
+        navLinks.forEach((link) => {
+            link.addEventListener("click", () => {
+                burger.classList.remove("active");
+                nav.classList.remove("active");
+                document.body.classList.remove("menu-open");
+            });
+        });
     }
 
-    function updateDots() {
-      const dots = Array.from(servicesDots.children);
+    /* =========================
+     SERVICES CAROUSEL
+  ========================= */
+    const servicesTrack = document.getElementById("servicesTrack");
+    const servicesDots = document.getElementById("servicesDots");
+    const prevBtn = document.querySelector(".services-carousel__nav--prev");
+    const nextBtn = document.querySelector(".services-carousel__nav--next");
+    const viewport = document.querySelector(".services-carousel__viewport");
 
-      dots.forEach((dot, index) => {
-        dot.classList.toggle("active", index === currentIndex);
-      });
-    }
+    if (servicesTrack && servicesDots && viewport) {
+        const slides = Array.from(servicesTrack.children);
+        let currentIndex = 0;
 
-    function updateButtons() {
-      if (!prevBtn || !nextBtn) return;
-
-      if (isMobile()) {
-        prevBtn.style.display = "none";
-        nextBtn.style.display = "none";
-        return;
-      }
-
-      prevBtn.style.display = "flex";
-      nextBtn.style.display = "flex";
-
-      prevBtn.disabled = currentIndex === 0;
-      nextBtn.disabled = currentIndex >= getMaxIndex();
-
-      prevBtn.style.opacity = currentIndex === 0 ? "0.45" : "1";
-      nextBtn.style.opacity = currentIndex >= getMaxIndex() ? "0.45" : "1";
-    }
-
-    function updateSlider() {
-      if (!slides.length) return;
-
-      if (isMobile()) {
-        servicesTrack.style.transform = "none";
-        updateDots();
-        updateButtons();
-        return;
-      }
-
-      const slideWidth = slides[0].offsetWidth;
-      const offset = currentIndex * (slideWidth + getGap());
-
-      servicesTrack.style.transform = `translateX(-${offset}px)`;
-
-      updateDots();
-      updateButtons();
-    }
-
-    if (prevBtn) {
-      prevBtn.addEventListener("click", () => {
-        if (currentIndex > 0) {
-          currentIndex--;
-          updateSlider();
+        function isMobile() {
+            return window.innerWidth <= 768;
         }
-      });
-    }
 
-    if (nextBtn) {
-      nextBtn.addEventListener("click", () => {
-        if (currentIndex < getMaxIndex()) {
-          currentIndex++;
-          updateSlider();
+        function getSlidesPerView() {
+            if (window.innerWidth <= 768) return 1;
+            if (window.innerWidth <= 1200) return 2;
+            return 3;
         }
-      });
+
+        function getGap() {
+            if (window.innerWidth <= 768) return 16;
+            return 28;
+        }
+
+        function getMaxIndex() {
+            return Math.max(0, slides.length - getSlidesPerView());
+        }
+
+        function createDots() {
+            servicesDots.innerHTML = "";
+            const dotsCount = getMaxIndex() + 1;
+
+            for (let i = 0; i < dotsCount; i++) {
+                const dot = document.createElement("button");
+                dot.className = "services-carousel__dot";
+                dot.type = "button";
+                dot.setAttribute("aria-label", `Перейти к слайду ${i + 1}`);
+
+                dot.addEventListener("click", () => {
+                    currentIndex = i;
+
+                    if (isMobile()) {
+                        const slideWidth = slides[0].offsetWidth + getGap();
+                        viewport.scrollTo({
+                            left: currentIndex * slideWidth,
+                            behavior: "smooth",
+                        });
+                    } else {
+                        updateSlider();
+                    }
+                });
+
+                servicesDots.appendChild(dot);
+            }
+        }
+
+        function updateDots() {
+            const dots = Array.from(servicesDots.children);
+
+            dots.forEach((dot, index) => {
+                dot.classList.toggle("active", index === currentIndex);
+            });
+        }
+
+        function updateButtons() {
+            if (!prevBtn || !nextBtn) return;
+
+            if (isMobile()) {
+                prevBtn.style.display = "none";
+                nextBtn.style.display = "none";
+                return;
+            }
+
+            prevBtn.style.display = "flex";
+            nextBtn.style.display = "flex";
+
+            prevBtn.disabled = currentIndex === 0;
+            nextBtn.disabled = currentIndex >= getMaxIndex();
+
+            prevBtn.style.opacity = currentIndex === 0 ? "0.45" : "1";
+            nextBtn.style.opacity =
+                currentIndex >= getMaxIndex() ? "0.45" : "1";
+        }
+
+        function updateSlider() {
+            if (!slides.length) return;
+
+            if (isMobile()) {
+                servicesTrack.style.transform = "none";
+                updateDots();
+                updateButtons();
+                return;
+            }
+
+            const slideWidth = slides[0].offsetWidth;
+            const offset = currentIndex * (slideWidth + getGap());
+
+            servicesTrack.style.transform = `translateX(-${offset}px)`;
+
+            updateDots();
+            updateButtons();
+        }
+
+        if (prevBtn) {
+            prevBtn.addEventListener("click", () => {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    updateSlider();
+                }
+            });
+        }
+
+        if (nextBtn) {
+            nextBtn.addEventListener("click", () => {
+                if (currentIndex < getMaxIndex()) {
+                    currentIndex++;
+                    updateSlider();
+                }
+            });
+        }
+
+        viewport.addEventListener(
+            "scroll",
+            () => {
+                if (!isMobile() || !slides.length) return;
+
+                const slideWidth = slides[0].offsetWidth + getGap();
+                const index = Math.round(viewport.scrollLeft / slideWidth);
+
+                currentIndex = Math.max(0, Math.min(index, getMaxIndex()));
+                updateDots();
+            },
+            { passive: true },
+        );
+
+        window.addEventListener("resize", () => {
+            const maxIndex = getMaxIndex();
+
+            if (currentIndex > maxIndex) {
+                currentIndex = maxIndex;
+            }
+
+            createDots();
+            updateSlider();
+        });
+
+        createDots();
+        updateSlider();
     }
-
-    viewport.addEventListener(
-      "scroll",
-      () => {
-        if (!isMobile() || !slides.length) return;
-
-        const slideWidth = slides[0].offsetWidth + getGap();
-        const index = Math.round(viewport.scrollLeft / slideWidth);
-
-        currentIndex = Math.max(0, Math.min(index, getMaxIndex()));
-        updateDots();
-      },
-      { passive: true }
-    );
-
-    window.addEventListener("resize", () => {
-      const maxIndex = getMaxIndex();
-
-      if (currentIndex > maxIndex) {
-        currentIndex = maxIndex;
-      }
-
-      createDots();
-      updateSlider();
-    });
-
-    createDots();
-    updateSlider();
-  }
 });
 // --------------------------------- Vacancy Page ---------------------------------
 const vacancyItems = document.querySelectorAll(".vacancy-item");
 
 if (vacancyItems.length) {
-  vacancyItems.forEach((item) => {
-    const body = item.querySelector(".vacancy-item__body");
-
-    if (item.classList.contains("active")) {
-      body.style.height = body.scrollHeight + "px";
-    }
-  });
-
-  vacancyItems.forEach((item) => {
-    const head = item.querySelector(".vacancy-item__head");
-    const body = item.querySelector(".vacancy-item__body");
-
-    head.addEventListener("click", () => {
-      const isActive = item.classList.contains("active");
-
-      vacancyItems.forEach((otherItem) => {
-        const otherBody = otherItem.querySelector(".vacancy-item__body");
-        otherItem.classList.remove("active");
-        otherBody.style.height = 0;
-      });
-
-      if (!isActive) {
-        item.classList.add("active");
-        body.style.height = body.scrollHeight + "px";
-      }
-    });
-  });
-
-  window.addEventListener("resize", () => {
     vacancyItems.forEach((item) => {
-      const body = item.querySelector(".vacancy-item__body");
-      if (item.classList.contains("active")) {
-        body.style.height = body.scrollHeight + "px";
-      }
+        const body = item.querySelector(".vacancy-item__body");
+
+        if (item.classList.contains("active")) {
+            body.style.height = body.scrollHeight + "px";
+        }
     });
-  });
-}
 
-// --------------------------------- Modal ---------------------------------
-// ======================
-    // CONTACT MODAL
-    // ======================
-    const modal = document.getElementById("contactModal");
-    const openButtons = document.querySelectorAll(".open-modal");
-    const closeBtn = document.getElementById("modalClose");
-    const overlay = document.getElementById("modalOverlay");
+    vacancyItems.forEach((item) => {
+        const head = item.querySelector(".vacancy-item__head");
+        const body = item.querySelector(".vacancy-item__body");
 
-    // відкриття
-    openButtons.forEach(btn => {
-        btn.addEventListener("click", (e) => {
-            e.preventDefault();
+        head.addEventListener("click", () => {
+            const isActive = item.classList.contains("active");
 
-            if (modal) {
-                modal.classList.add("active");
-                document.body.classList.add("modal-open");
+            vacancyItems.forEach((otherItem) => {
+                const otherBody = otherItem.querySelector(
+                    ".vacancy-item__body",
+                );
+                otherItem.classList.remove("active");
+                otherBody.style.height = 0;
+            });
+
+            if (!isActive) {
+                item.classList.add("active");
+                body.style.height = body.scrollHeight + "px";
             }
         });
     });
 
-    // функція закриття
-    const closeModal = () => {
+    window.addEventListener("resize", () => {
+        vacancyItems.forEach((item) => {
+            const body = item.querySelector(".vacancy-item__body");
+            if (item.classList.contains("active")) {
+                body.style.height = body.scrollHeight + "px";
+            }
+        });
+    });
+}
+
+// --------------------------------- Modal ---------------------------------
+// ======================
+// CONTACT MODAL
+// ======================
+const modal = document.getElementById("contactModal");
+const openButtons = document.querySelectorAll(".open-modal");
+const closeBtn = document.getElementById("modalClose");
+const overlay = document.getElementById("modalOverlay");
+
+// відкриття
+openButtons.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+        e.preventDefault();
+
         if (modal) {
-            modal.classList.remove("active");
-            document.body.classList.remove("modal-open");
-        }
-    };
-
-    if (closeBtn) closeBtn.addEventListener("click", closeModal);
-    if (overlay) overlay.addEventListener("click", closeModal);
-
-    // ESC
-    document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") {
-            closeModal();
-            closeSuccessModal();
+            modal.classList.add("active");
+            document.body.classList.add("modal-open");
         }
     });
+});
 
-
-    // ======================
-    // SUCCESS MODAL
-    // ======================
-    const form = document.querySelector(".modal__form");
-    const successModal = document.getElementById("successModal");
-    const successClose = document.getElementById("successClose");
-
-    // submit
-    if (form && successModal) {
-        form.addEventListener("submit", (e) => {
-            e.preventDefault();
-
-            // закриваємо першу модалку
-            closeModal();
-
-            // відкриваємо success
-            successModal.classList.add("active");
-            document.body.classList.add("modal-open");
-
-            form.reset();
-        });
+// функція закриття
+const closeModal = () => {
+    if (modal) {
+        modal.classList.remove("active");
+        document.body.classList.remove("modal-open");
     }
+};
 
-    // закриття success
-    const closeSuccessModal = () => {
-        if (successModal) {
-            successModal.classList.remove("active");
-            document.body.classList.remove("modal-open");
-        }
-    };
+if (closeBtn) closeBtn.addEventListener("click", closeModal);
+if (overlay) overlay.addEventListener("click", closeModal);
 
-    if (successClose) {
-        successClose.addEventListener("click", closeSuccessModal);
+// ESC
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+        closeModal();
+        closeSuccessModal();
     }
+});
+
+// ======================
+// SUCCESS MODAL
+// ======================
+const form = document.querySelector(".modal__form");
+const successModal = document.getElementById("successModal");
+const successClose = document.getElementById("successClose");
+
+// submit
+if (form && successModal) {
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        // закриваємо першу модалку
+        closeModal();
+
+        // відкриваємо success
+        successModal.classList.add("active");
+        document.body.classList.add("modal-open");
+
+        form.reset();
+    });
+}
+
+// закриття success
+const closeSuccessModal = () => {
+    if (successModal) {
+        successModal.classList.remove("active");
+        document.body.classList.remove("modal-open");
+    }
+};
+
+if (successClose) {
+    successClose.addEventListener("click", closeSuccessModal);
+}
 
 // ==============================================================
-    // ==================== FAQ ==================
-document.addEventListener('DOMContentLoaded', function () {
-  const faqItems = document.querySelectorAll('.faq-item__faq');
+// ==================== FAQ ==================
+document.addEventListener("DOMContentLoaded", function () {
+    const faqItems = document.querySelectorAll(".faq-item__faq");
 
-  faqItems.forEach(function (item) {
-    const question = item.querySelector('.faq-question__faq');
+    faqItems.forEach(function (item) {
+        const question = item.querySelector(".faq-question__faq");
 
-    question.addEventListener('click', function () {
-      const isActive = item.classList.contains('active__faq');
+        question.addEventListener("click", function () {
+            const isActive = item.classList.contains("active__faq");
 
-      faqItems.forEach(function (faqItem) {
-        faqItem.classList.remove('active__faq');
-      });
+            faqItems.forEach(function (faqItem) {
+                faqItem.classList.remove("active__faq");
+            });
 
-      if (!isActive) {
-        item.classList.add('active__faq');
-      }
+            if (!isActive) {
+                item.classList.add("active__faq");
+            }
+        });
     });
-  });
 });
 // -------------------------------------- BLOG Zmist
 document.addEventListener("DOMContentLoaded", function () {
@@ -322,11 +324,22 @@ document.addEventListener("DOMContentLoaded", function () {
     const right = document.querySelector(".orbitflow__right");
     const pinArea = document.querySelector(".orbitflow__pin-area");
     const circleWrap = document.querySelector(".orbitflow__circle-wrap");
-    const progressCircle = document.querySelector(".orbitflow__circle-progress");
+    const progressCircle = document.querySelector(
+        ".orbitflow__circle-progress",
+    );
     const currentStep = document.getElementById("orbitflowStep");
     const cards = document.querySelectorAll(".orbitflow__card");
 
-    if (!section || !left || !right || !pinArea || !circleWrap || !progressCircle || !currentStep || !cards.length) {
+    if (
+        !section ||
+        !left ||
+        !right ||
+        !pinArea ||
+        !circleWrap ||
+        !progressCircle ||
+        !currentStep ||
+        !cards.length
+    ) {
         return;
     }
 
@@ -345,7 +358,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             });
         },
-        { threshold: 0.15 }
+        { threshold: 0.15 },
     );
 
     cards.forEach((card) => revealObserver.observe(card));
@@ -354,14 +367,17 @@ document.addEventListener("DOMContentLoaded", function () {
         if (window.innerWidth <= 991) {
             pinArea.style.minHeight = "auto";
             section.style.setProperty("--orbitflow-fixed-left", "200px");
-            circleWrap.classList.remove("orbitflow__is-fixed", "orbitflow__is-bottom");
+            circleWrap.classList.remove(
+                "orbitflow__is-fixed",
+                "orbitflow__is-bottom",
+            );
             return;
         }
 
         pinArea.style.minHeight = `${right.offsetHeight}px`;
 
         const leftRect = left.getBoundingClientRect();
-        const centerX = leftRect.left + window.scrollX + (leftRect.width / 2);
+        const centerX = leftRect.left + window.scrollX + leftRect.width / 2;
 
         section.style.setProperty("--orbitflow-fixed-left", `${centerX}px`);
     }
@@ -376,10 +392,13 @@ document.addEventListener("DOMContentLoaded", function () {
         const circleHeight = circleWrap.offsetHeight;
         const viewportCenter = window.innerHeight / 2;
 
-        circleWrap.classList.remove("orbitflow__is-fixed", "orbitflow__is-bottom");
+        circleWrap.classList.remove(
+            "orbitflow__is-fixed",
+            "orbitflow__is-bottom",
+        );
 
-        const startPin = pinRect.top <= viewportCenter - (circleHeight / 2);
-        const endPin = pinRect.bottom <= viewportCenter + (circleHeight / 2);
+        const startPin = pinRect.top <= viewportCenter - circleHeight / 2;
+        const endPin = pinRect.bottom <= viewportCenter + circleHeight / 2;
 
         if (!startPin) {
             // лишається зверху
@@ -389,13 +408,17 @@ document.addEventListener("DOMContentLoaded", function () {
             circleWrap.classList.add("orbitflow__is-fixed");
         }
 
-        const scrollableDistance = Math.max(section.offsetHeight - window.innerHeight, 1);
+        const scrollableDistance = Math.max(
+            section.offsetHeight - window.innerHeight,
+            1,
+        );
         const passed = Math.max(0, -sectionRect.top);
         let progress = passed / scrollableDistance;
 
         progress = Math.max(0, Math.min(progress, 1));
 
-        progressCircle.style.strokeDashoffset = circumference - (progress * circumference);
+        progressCircle.style.strokeDashoffset =
+            circumference - progress * circumference;
 
         let activeStep = Math.round(progress * totalSteps);
 
@@ -411,7 +434,10 @@ document.addEventListener("DOMContentLoaded", function () {
         currentStep.textContent = activeStep;
 
         cards.forEach((card, index) => {
-            card.classList.toggle("orbitflow__is-active", index === activeStep - 1);
+            card.classList.toggle(
+                "orbitflow__is-active",
+                index === activeStep - 1,
+            );
         });
     }
 
@@ -438,38 +464,21 @@ document.addEventListener("DOMContentLoaded", function () {
     window.addEventListener("resize", handleAll);
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // -------------- New Slider for Clients ---------------
 
-document.addEventListener('DOMContentLoaded', () => {
-    const sliders = document.querySelectorAll('.clients__slider');
+document.addEventListener("DOMContentLoaded", () => {
+    const sliders = document.querySelectorAll(".clients__slider");
 
-    sliders.forEach(slider => {
-        const track = slider.querySelector('.clients__track');
+    sliders.forEach((slider) => {
+        const track = slider.querySelector(".clients__track");
         if (!track) return;
 
         const speed = parseFloat(slider.dataset.speed) || 0.8;
-        const isReverse = slider.classList.contains('reverse');
+        const isReverse = slider.classList.contains("reverse");
 
         // Дублюємо логотипи для безшовної петлі
         const logos = Array.from(track.children);
-        logos.forEach(logo => {
+        logos.forEach((logo) => {
             const clone = logo.cloneNode(true);
             track.appendChild(clone);
         });
@@ -493,11 +502,61 @@ document.addEventListener('DOMContentLoaded', () => {
         animate();
 
         // Пауза при наведенні
-        slider.addEventListener('mouseenter', () => isPaused = true);
-        slider.addEventListener('mouseleave', () => isPaused = false);
+        slider.addEventListener("mouseenter", () => (isPaused = true));
+        slider.addEventListener("mouseleave", () => (isPaused = false));
 
         // Пауза на мобільних при торканні
-        slider.addEventListener('touchstart', () => isPaused = true);
-        slider.addEventListener('touchend', () => isPaused = false);
+        slider.addEventListener("touchstart", () => (isPaused = true));
+        slider.addEventListener("touchend", () => (isPaused = false));
     });
+});
+
+// --------------------- Stata About Us ----------------------
+// -----------------------------------------------------------
+document.addEventListener('DOMContentLoaded', function () {
+  const items = document.querySelectorAll('.stat-number');
+
+  function animateRandom(el, finalValue) {
+    let duration = 1200; // коротка "жива" фаза
+    let interval = 60;
+
+    let elapsed = 0;
+
+    const glitch = setInterval(() => {
+      const random = Math.floor(Math.random() * finalValue);
+      el.textContent = random + '+';
+      elapsed += interval;
+
+      if (elapsed >= duration) {
+        clearInterval(glitch);
+
+        // плавна фіксація
+        el.style.opacity = '0.4';
+
+        setTimeout(() => {
+          el.textContent = finalValue + '+';
+          el.style.transition = 'opacity 0.4s ease';
+          el.style.opacity = '1';
+        }, 120);
+      }
+    }, interval);
+  }
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach((entry, index) => {
+      if (entry.isIntersecting) {
+        const el = entry.target.querySelector('.stat-number');
+        const target = parseInt(el.dataset.target, 10);
+
+        setTimeout(() => {
+          animateRandom(el, target);
+        }, index * 120);
+
+        entry.target.classList.add('show');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+
+  document.querySelectorAll('.stat-item').forEach(item => observer.observe(item));
 });
