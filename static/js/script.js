@@ -560,3 +560,21 @@ document.addEventListener('DOMContentLoaded', function () {
 
   document.querySelectorAll('.stat-item').forEach(item => observer.observe(item));
 });
+
+// ---------------------
+document.addEventListener('DOMContentLoaded', function () {
+  const items = document.querySelectorAll('.partner');
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach((entry, index) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('show');
+        }, index * 60);
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  items.forEach(item => observer.observe(item));
+});
